@@ -1,0 +1,19 @@
+{
+  "name": "generator-angular2-typescript",
+  "version": "0.0.1",
+  "description": "Scaffold out a front-end project with angular2, typescript and much more..",
+  "keywords": [
+    "yeoman-generator",
+    "angular2",
+    "typescript",
+    "webpack"
+  ],
+  "author": "Shibbir Ahmed <shibbir.cse@gmail.com>",
+  "license": "MIT",
+  "files": [
+    "app"
+  ],
+  "dependencies": {
+    "yeoman-generator": "^0.23.3"
+  }
+}
