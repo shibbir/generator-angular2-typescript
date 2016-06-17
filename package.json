@@ -8,7 +8,17 @@
     "typescript",
     "webpack"
   ],
-  "author": "Shibbir Ahmed <shibbir.cse@gmail.com>",
+  "homepage": "https://github.com/shibbir/generator-angular2-typescript",
+  "bugs": "https://github.com/shibbir/generator-angular2-typescript/issues",
+  "author": {
+    "name": "Shibbir Ahmed",
+    "email": "shibbir.cse@gmail.com",
+    "url": "https://github.com/shibbir"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/shibbir/generator-angular2-typescript.git"
+  },
   "main": "app/index.js",
   "license": "MIT",
   "files": [
