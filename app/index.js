@@ -1,30 +1,53 @@
 'use strict';
 
 var generators = require('yeoman-generator');
+var yosay = require('yosay');
+var path = require('path');
+var _ = require('lodash');
 
-module.exports = generators.Base.extend({
+var Generator = module.exports = generators.Base.extend({
+    constructor: function () {
+        generators.Base.apply(this, arguments);
+
+        this.log(yosay('Hello, and welcome to angular2-typescript generator!'));
+        this.argument('appname', { type: String, required: false });
+        this.appname = this.appname || path.basename(process.cwd());
+
+        this.pkg = require('../package.json');
+        this.sourceRoot(path.join(__dirname, '../templates/common'));
+    },
+
     prompting: function () {
 
         return this.prompt([{
-            type    : 'confirm',
-            name    : 'sass',
-            message : 'Would you like to use Saas?'
-        }, {
             type    : 'list',
-            name    : 'css-frameworks',
+            name    : 'cssFramework',
             message : 'Which CSS framework would you like to include?',
             choices: [{
-                value   : 'Bootstrap',
-                name    : 'bootstrap.js',
+                value   : 'bootstrap',
+                name    : 'Bootstrap',
                 checked : true
             }, {
-            value   : 'Foundation',
-            name    : 'foundation.js',
-            checked : false
+                value   : 'foundation',
+                name    : 'Foundation',
+                checked : false
+            }]
+        }, {
+            type    : 'list',
+            name    : 'moduleLoader',
+            message : 'Which module loader would you like to use?',
+            choices: [{
+                value   : 'webpack',
+                name    : 'webpack',
+                checked : false
+            }, {
+                value   : 'systemjs',
+                name    : 'systemjs',
+                checked : false
             }]
         }, {
             type    : 'checkbox',
-            name    : 'feature-packages',
+            name    : 'featurePackages',
             message : 'Which additional feature Packages would you like to include?',
             choices: [{
                 value   : '@angular/http',
@@ -36,21 +59,49 @@ module.exports = generators.Base.extend({
                 checked : false
             }]
         }]).then(function (answers) {
-            this.log(answers);
+            this.props = answers;
         }.bind(this));
     },
 
+    writings: function () {
+        this.fs.copyTpl(
+            this.templatePath('root/_package.json'),
+            this.destinationPath('package.json'), {
+                appname: this.appname
+            }
+        );
+
+        this.fs.copyTpl(
+            this.templatePath('root/_readme.md'),
+            this.destinationPath('readme.md'), {
+                appname: this.appname,
+                pkg: this.pkg
+            }
+        );
+
+        this.fs.copy(
+            this.templatePath('root/.editorconfig'),
+            this.destinationPath('.editorconfig')
+        );
+
+        this.fs.copy(
+            this.templatePath('root/.gitignore'),
+            this.destinationPath('.gitignore')
+        );
+    },
+
     installDependencies: function() {
-        this.npmInstall([
-            '@angular/core',
-            '@angular/common',
-            '@angular/compiler',
-            '@angular/platform-browser',
-            '@angular/platform-browser-dynamic',
-            'core-js',
-            'reflect-metadata',
-            'rxjs',
-            'zone.js'
-        ], { 'save': true });
+        var libraries = require('./libraries');
+        var packages = _.union(libraries.angularDependencies, libraries.angularPackages, this.props.featurePackages);
+
+        if(this.props.moduleLoader === 'webpack') {
+            packages = _.union(packages, libraries.webpack);
+        } else {
+            packages = _.union(packages, libraries.systemjs);
+        }
+
+        packages.push(this.props.cssFramework);
+
+        this.npmInstall(packages, { 'save': true });
     }
 });

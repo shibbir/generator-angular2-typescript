@@ -9,11 +9,14 @@
     "webpack"
   ],
   "author": "Shibbir Ahmed <shibbir.cse@gmail.com>",
+  "main": "app/index.js",
   "license": "MIT",
   "files": [
     "app"
   ],
   "dependencies": {
-    "yeoman-generator": "^0.23.3"
+    "lodash": "^4.13.1",
+    "yeoman-generator": "^0.23.3",
+    "yosay": "^1.2.0"
   }
 }

@@ -1,0 +1,13 @@
+{
+  "name": "<%= appname %>",
+  "version": "0.0.1",
+  "description": "My awesome app",
+  "keywords": [
+    "angular2",
+    "typescript",
+    "webpack"
+  ],
+  "license": "MIT",
+  "dependencies": {
+  }
+}
