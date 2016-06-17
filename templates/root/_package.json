@@ -1,0 +1,36 @@
+{
+  "name": "<%= appname %>",
+  "version": "<%= pkg.version %>",
+  "description": "My Angular2-TypeScript App",
+  "keywords": [
+    "angular2",<% if (systemjs) { %>
+    "systemjs",<% } %>
+    "typescript"<% if (webpack) { %>,
+    "webpack"<% } %>
+  ],
+  "license": "MIT",
+  "scripts": {
+    "start": "tsc && concurrently \"npm run tsc:w\" \"npm run lite\" ",
+    "lite": "lite-server",
+    "postinstall": "typings install",
+    "tsc": "tsc",
+    "tsc:w": "tsc -w",
+    "typings": "typings"
+  },
+  "dependencies": {
+    "rxjs": "5.0.0-beta.6"
+  },
+  "devDependencies": {
+    "codelyzer": "0.0.19",<% if (systemjs) { %>
+    "concurrently": "^2.0.0",
+    "systemjs": "0.19.27",
+    "lite-server": "^2.2.0",<% } %>
+    "tslint": "^3.10.2",
+    "typescript": "^1.8.10",
+    "typings": "^0.7.9" <% if (webpack) { %>,
+    "webpack": "^1.13.1",
+    "extract-text-webpack-plugin": "^1.0.1",
+    "webpack-dev-server": "^1.14.1",
+    "webpack-merge": "^0.12.0"<% } %>
+  }
+}

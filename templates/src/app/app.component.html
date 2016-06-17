@@ -1,0 +1,17 @@
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <a [routerLink]="['Home']" class="navbar-brand">
+                CBook
+            </a>
+        </div>
+
+        <ul class="nav navbar-nav navbar-right">
+            <li><a [routerLink]="['About']">About</a></li>
+        </ul>
+    </div>
+</nav>
+
+<div class="container">
+    <router-outlet></router-outlet>
+</div>

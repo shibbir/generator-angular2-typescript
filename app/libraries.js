@@ -5,19 +5,9 @@ var cssFrameworks = [
     'foundation'
 ];
 
-var webpack = [
-    'webpack',
-    'webpack-server'
-];
-
-var systemjs = [
-    'systemjs'
-];
-
 var angularDependencies = [
     'core-js',
     'reflect-metadata',
-    'rxjs',
     'zone.js'
 ];
 
@@ -26,12 +16,12 @@ var angularPackages = [
     '@angular/common',
     '@angular/compiler',
     '@angular/platform-browser',
-    '@angular/platform-browser-dynamic'
+    '@angular/platform-browser-dynamic',
+    '@angular/router',
+    '@angular/router-deprecated'
 ];
 
 module.exports = {
-    webpack: webpack,
-    systemjs: systemjs,
     cssFrameworks: cssFrameworks,
     angularPackages: angularPackages,
     angularDependencies: angularDependencies
