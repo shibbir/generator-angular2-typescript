@@ -18,22 +18,13 @@ var Generator = module.exports = generators.Base.extend({
     }
 });
 
-Generator.prototype.askForCssFramework = function askForCssFramework() {
+Generator.prototype.askForBootstrap = function askForBootstrap() {
     return this.prompt([{
-        type    : 'list',
-        name    : 'cssFramework',
-        message : 'Which CSS framework would you like to include?',
-        choices: [{
-            value   : 'bootstrap',
-            name    : 'Bootstrap',
-            checked : true
-        }, {
-            value   : 'foundation',
-            name    : 'Foundation',
-            checked : false
-        }]
+        type    : 'confirm',
+        name    : 'bootstrap',
+        message : 'Would you like to use bootstrap?',
     }]).then(function(props) {
-        this.cssFramework = props.cssFramework;
+        this.bootstrap = props.bootstrap;
     }.bind(this));
 };
 
@@ -43,13 +34,9 @@ Generator.prototype.askForModuleLoader = function askForModuleLoader() {
         name    : 'moduleLoader',
         message : 'Which module loader would you like to use?',
         choices: [{
-            value   : 'systemjs',
-            name    : 'systemjs',
-            checked : true
-        }, {
             value   : 'webpack',
             name    : 'webpack',
-            checked : false
+            checked : true
         }]
     }]).then(function(props) {
         if(props.moduleLoader === 'webpack') {
@@ -82,7 +69,6 @@ Generator.prototype.writePackageFiles = function writePackageFiles() {
 
     this.template('root/_package.json', 'package.json', {
         appname: this.appname,
-        pkg: this.pkg,
         webpack: this.webpack,
         systemjs: this.systemjs
     });
@@ -114,8 +100,22 @@ Generator.prototype.writePackageFiles = function writePackageFiles() {
         this.template('root/bs-config.json', 'bs-config.json');
     }
 
+    if(this.webpack) {
+        this.template('root/webpack.config.js', 'webpack.config.js');
+        this.template('root/config/helpers.js', 'config/helpers.js');
+        this.template('root/config/webpack.common.js', 'config/webpack.common.js');
+        this.template('root/config/webpack.dev.js', 'config/webpack.dev.js');
+        this.template('root/config/webpack.prod.js', 'config/webpack.prod.js');
+
+        this.template('src/polyfills.ts', 'src/polyfills.ts');
+        this.template('src/vendor.ts', 'src/vendor.ts');
+    }
+
     this.template('src/index.html', 'src/index.html', {
-        appname: this.appname
+        appname: this.appname,
+        webpack: this.webpack,
+        systemjs: this.systemjs,
+        bootstrap: this.bootstrap
     });
 
     this.template('src/main.ts', 'src/main.ts');
@@ -134,7 +134,9 @@ Generator.prototype.installDependencies = function installDependencies() {
     var libraries = require('./libraries');
     var dependencies = _.union(libraries.angularDependencies, libraries.angularPackages, this.angularPackages);
 
-    dependencies.push(this.cssFramework);
+    if(this.bootstrap) {
+        dependencies.push('bootstrap');
+    }
 
     this.npmInstall(dependencies, { 'save': true });
 };

@@ -1,6 +1,6 @@
 {
   "name": "<%= appname %>",
-  "version": "<%= pkg.version %>",
+  "version": "0.0.1",
   "description": "My Angular2-TypeScript App",
   "keywords": [
     "angular2",<% if (systemjs) { %>
@@ -10,12 +10,13 @@
   ],
   "license": "MIT",
   "scripts": {
+    "postinstall": "./node_modules/.bin/typings install"<% if (systemjs) { %>,
     "start": "tsc && concurrently \"npm run tsc:w\" \"npm run lite\" ",
     "lite": "lite-server",
-    "postinstall": "typings install",
     "tsc": "tsc",
-    "tsc:w": "tsc -w",
-    "typings": "typings"
+    "tsc:w": "tsc -w"<% } if (webpack) { %>,
+    "start": "./node_modules/.bin/webpack-dev-server --inline --progress --port 3000",
+    "build": "./node_modules/.bin/rimraf dist && ./node_modules/.bin/webpack --config config/webpack.prod.js --progress --profile --bail"<% } %>
   },
   "dependencies": {
     "rxjs": "5.0.0-beta.6"
@@ -28,8 +29,16 @@
     "tslint": "^3.10.2",
     "typescript": "^1.8.10",
     "typings": "^0.7.9" <% if (webpack) { %>,
-    "webpack": "^1.13.1",
+    "css-loader": "^0.23.1",
     "extract-text-webpack-plugin": "^1.0.1",
+    "file-loader": "^0.8.5",
+    "html-loader": "^0.4.3",
+    "html-webpack-plugin": "^2.15.0",
+    "raw-loader": "^0.5.1",
+    "rimraf": "^2.5.2",
+    "style-loader": "^0.13.1",
+    "ts-loader": "^0.8.1",
+    "webpack": "^1.13.1",
     "webpack-dev-server": "^1.14.1",
     "webpack-merge": "^0.12.0"<% } %>
   }

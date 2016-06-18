@@ -1,8 +1,8 @@
-<nav class="navbar navbar-default navbar-fixed-top">
+<% if (bootstrap) { %><nav class="navbar navbar-default navbar-fixed-top">
     <div class="container">
         <div class="navbar-header">
             <a [routerLink]="['Home']" class="navbar-brand">
-                CBook
+                Home
             </a>
         </div>
 
@@ -10,8 +10,10 @@
             <li><a [routerLink]="['About']">About</a></li>
         </ul>
     </div>
-</nav>
-
+</nav><% } %><% if (!bootstrap) { %>
+<a [routerLink]="['Home']">Home</a>
+<a [routerLink]="['About']">About</a>
+<% } %>
 <div class="container">
     <router-outlet></router-outlet>
 </div>

@@ -7,8 +7,9 @@ version <%= pkg.version %>.
 ## Installation
 
 ```bash
-$ npm install typings typescript -g
+$ npm install typescript -g
 $ npm start
+$ npm test
 ```
 
 ## License
