@@ -8,7 +8,7 @@
     "typescript"<% if (webpack) { %>,
     "webpack"<% } %>
   ],
-  "license": "MIT",
+  "license": "<%= license %>",
   "scripts": {
     "postinstall": "./node_modules/.bin/typings install"<% if (systemjs) { %>,
     "start": "tsc && concurrently \"npm run tsc:w\" \"npm run lite\" ",

@@ -13,7 +13,15 @@ You need to have [Node.js](https://nodejs.org/en/) installed on your machine bef
 
 ```bash
 $ npm install yo generator-angular2-typescript -g
+```
 
+Make a new directory, and cd into it:
+```bash
+mkdir my-new-project && cd $_
+```
+
+Run yo angular, optionally passing an app name:
+```bash
 $ yo angular2-typescript [app-name]
 ```
 

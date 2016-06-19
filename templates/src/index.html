@@ -15,9 +15,9 @@
     </style>
 </head>
 <body>
-    <my-app>Loading...</my-app>
+    <my-app>Loading...</my-app><% if(systemjs) { %>
 
-    <% if(systemjs) { %><script src="node_modules/core-js/client/shim.min.js"></script>
+    <script src="node_modules/core-js/client/shim.min.js"></script>
     <script src="node_modules/zone.js/dist/zone.js"></script>
     <script src="node_modules/reflect-metadata/Reflect.js"></script>
     <script src="node_modules/systemjs/dist/system.src.js"></script>

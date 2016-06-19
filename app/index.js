@@ -1,11 +1,11 @@
 'use strict';
 
-var generators = require('yeoman-generator');
-var yosay = require('yosay');
-var path = require('path');
-var _ = require('lodash');
+let generators = require('yeoman-generator');
+let yosay = require('yosay');
+let path = require('path');
+let _ = require('lodash');
 
-var Generator = module.exports = generators.Base.extend({
+let Generator = module.exports = generators.Base.extend({
     constructor: function () {
         generators.Base.apply(this, arguments);
 
@@ -18,13 +18,32 @@ var Generator = module.exports = generators.Base.extend({
     }
 });
 
+Generator.prototype.askForLicense = function askForLicense() {
+    return this.prompt([{
+        type    : 'list',
+        name    : 'license',
+        message : 'Which type of license would you like to use?',
+        choices: [{
+            value   : 'MIT',
+            name    : 'MIT',
+            checked : true
+        }, {
+            value   : 'BSD-2-Clause',
+            name    : 'BSD-2-Clause',
+            checked : false
+        }]
+    }]).then(function(props) {
+        this.license = props.license;
+    }.bind(this));
+};
+
 Generator.prototype.askForBootstrap = function askForBootstrap() {
     return this.prompt([{
         type    : 'confirm',
         name    : 'bootstrap',
-        message : 'Would you like to use bootstrap?',
+        message : 'Would you like to use bootstrap?'
     }]).then(function(props) {
-        this.bootstrap = props.bootstrap;
+        this.bootstrap = props.bootstrap ? 'bootstrap' : false;
     }.bind(this));
 };
 
@@ -51,14 +70,16 @@ Generator.prototype.askForAngularPackages = function askForAngularPackages() {
     return this.prompt([{
         type    : 'checkbox',
         name    : 'angularPackages',
-        message : 'Which additional angular Packages would you like to include?',
+        message : 'Which additional angular packages would you like to include?',
         choices: [{
             value   : '@angular/http',
             name    : '@angular/http',
             checked : false
         }]
     }]).then(function(props) {
-        this.angularPackages = props.angularPackages;
+        this.angularPackages = [];
+
+        props.angularPackages.forEach(key => this.angularPackages[key] = key);
     }.bind(this));
 };
 
@@ -66,15 +87,22 @@ Generator.prototype.writePackageFiles = function writePackageFiles() {
     this.template('root/.gitignore', '.gitignore');
     this.template('root/.editorconfig', '.editorconfig');
     this.template('root/tsconfig.json', 'tsconfig.json');
+    this.template('root/_license', 'license', {
+        license: this.license,
+        year: new Date().getFullYear(),
+        owner: '<copyright holders>'
+    });
 
     this.template('root/_package.json', 'package.json', {
         appname: this.appname,
+        license: this.license,
         webpack: this.webpack,
         systemjs: this.systemjs
     });
 
     this.template('root/_readme.md', 'readme.md', {
         appname: this.appname,
+        license: this.license,
         pkg: this.pkg
     });
 
@@ -87,7 +115,7 @@ Generator.prototype.writePackageFiles = function writePackageFiles() {
     });
 
     if(this.systemjs) {
-        var additionalPackages = [];
+        let additionalPackages = [];
 
         this.angularPackages.forEach(function(p) {
             additionalPackages[p] = p;
@@ -131,11 +159,13 @@ Generator.prototype.writePackageFiles = function writePackageFiles() {
 };
 
 Generator.prototype.installDependencies = function installDependencies() {
-    var libraries = require('./libraries');
-    var dependencies = _.union(libraries.angularDependencies, libraries.angularPackages, this.angularPackages);
+    let libraries = require('./libraries');
+    let dependencies = _.union(libraries.angularDependencies, libraries.angularPackages);
+
+    Object.keys(this.angularPackages).forEach(key => dependencies.push(key));
 
     if(this.bootstrap) {
-        dependencies.push('bootstrap');
+        dependencies.push(this.bootstrap);
     }
 
     this.npmInstall(dependencies, { 'save': true });
