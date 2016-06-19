@@ -20,13 +20,14 @@ Make a new directory, and cd into it:
 mkdir my-new-project && cd $_
 ```
 
-Run yo angular, optionally passing an app name:
+Run yo angular2-typescript, optionally passing an app name:
 ```bash
 $ yo angular2-typescript [app-name]
 ```
 
 ## License
-(The MIT License)
+The MIT License (MIT)
+Copyright (c) 2016 Shibbir Ahmed
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the
