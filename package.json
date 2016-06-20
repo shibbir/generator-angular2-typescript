@@ -16,10 +16,7 @@
     "email": "shibbir.cse@gmail.com",
     "url": "https://github.com/shibbir"
   },
-  "repository": {
-    "type": "git",
-    "url": "git://github.com/shibbir/generator-angular2-typescript.git"
-  },
+  "repository": "shibbir/generator-angular2-typescript",
   "main": "app/index.js",
   "license": "MIT",
   "files": [
@@ -27,7 +24,7 @@
   ],
   "dependencies": {
     "lodash": "^4.13.1",
-    "yeoman-generator": "^0.23.3",
+    "yeoman-generator": "^0.23.4",
     "yosay": "^1.2.0"
   }
 }

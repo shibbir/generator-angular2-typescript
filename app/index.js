@@ -22,7 +22,7 @@ Generator.prototype.askForLicense = function askForLicense() {
     return this.prompt([{
         type    : 'list',
         name    : 'license',
-        message : 'Which type of license would you like to use?',
+        message : 'Which license do you want to use?',
         choices: [{
             value   : 'MIT',
             name    : 'MIT',
@@ -87,7 +87,7 @@ Generator.prototype.writePackageFiles = function writePackageFiles() {
     this.template('root/.gitignore', '.gitignore');
     this.template('root/.editorconfig', '.editorconfig');
     this.template('root/tsconfig.json', 'tsconfig.json');
-    this.template('root/_license', 'license', {
+    this.template('root/_LICENSE', 'LICENSE', {
         license: this.license,
         year: new Date().getFullYear(),
         owner: '<copyright holders>'
