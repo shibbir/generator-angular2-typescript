@@ -9,7 +9,7 @@ This project is generated with [yo angular2-typescript generator](https://github
 $ npm install typescript -g
 $ npm start
 $ npm test
-```
+```<% if (license) { %>
 
 ## License
-<a href="https://opensource.org/licenses/<%= license %>"><%= license %> License</a>
+<a href="https://opensource.org/licenses/<%= license %>"><%= license %> License</a><% } %>

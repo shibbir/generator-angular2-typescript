@@ -13,28 +13,22 @@ let Generator = module.exports = generators.Base.extend({
         this.argument('appname', { type: String, required: false });
         this.appname = _.kebabCase(this.appname || path.basename(process.cwd()));
 
-        this.pkg = require('../package.json');
         this.sourceRoot(path.join(__dirname, '../templates/'));
+    },
+
+    end: function() {
+        this.template('root/_readme.md', 'readme.md', {
+            appname: this.appname,
+            license: this.fs.readJSON(this.destinationPath('package.json'), {}).license,
+            pkg: require('../package.json')
+        });
     }
 });
 
 Generator.prototype.askForLicense = function askForLicense() {
-    return this.prompt([{
-        type    : 'list',
-        name    : 'license',
-        message : 'Which license do you want to use?',
-        choices: [{
-            value   : 'MIT',
-            name    : 'MIT',
-            checked : true
-        }, {
-            value   : 'BSD-2-Clause',
-            name    : 'BSD-2-Clause',
-            checked : false
-        }]
-    }]).then(function(props) {
-        this.license = props.license;
-    }.bind(this));
+    this.composeWith('license', null, {
+        local: require.resolve('generator-license/app')
+    });
 };
 
 Generator.prototype.askForBootstrap = function askForBootstrap() {
@@ -85,25 +79,14 @@ Generator.prototype.askForAngularPackages = function askForAngularPackages() {
 
 Generator.prototype.writePackageFiles = function writePackageFiles() {
     this.template('root/.gitignore', '.gitignore');
+    this.template('root/.gitattributes', '.gitattributes');
     this.template('root/.editorconfig', '.editorconfig');
     this.template('root/tsconfig.json', 'tsconfig.json');
-    this.template('root/_LICENSE', 'LICENSE', {
-        license: this.license,
-        year: new Date().getFullYear(),
-        owner: '<copyright holders>'
-    });
 
     this.template('root/_package.json', 'package.json', {
         appname: this.appname,
-        license: this.license,
         webpack: this.webpack,
         systemjs: this.systemjs
-    });
-
-    this.template('root/_readme.md', 'readme.md', {
-        appname: this.appname,
-        license: this.license,
-        pkg: this.pkg
     });
 
     this.template('root/_tslint.json', 'tslint.json', {

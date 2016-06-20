@@ -7,6 +7,3 @@ sudo: false
 
 branches:
   only: master
-
-before_script:
-  - npm install -g yo typings typescript
