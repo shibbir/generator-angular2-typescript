@@ -12,7 +12,7 @@ Status: Work In Progress
 You need to have latest version of [Node.js](https://nodejs.org/en/) installed on your machine before running the followings:
 
 ```bash
-npm install yo generator-angular2-typescript -g
+npm install typescript yo generator-angular2-typescript -g
 ```
 
 Make a new directory, and cd into it:
