@@ -78,8 +78,8 @@ Generator.prototype.askForAngularPackages = function askForAngularPackages() {
 };
 
 Generator.prototype.writePackageFiles = function writePackageFiles() {
-    this.template('root/.gitignore', '.gitignore');
-    this.template('root/.gitattributes', '.gitattributes');
+    this.template('root/gitignore', '.gitignore');
+    this.template('root/gitattributes', '.gitattributes');
     this.template('root/.editorconfig', '.editorconfig');
     this.template('root/tsconfig.json', 'tsconfig.json');
 

@@ -1,6 +1,6 @@
 {
   "name": "<%= appname %>",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "My Angular2-TypeScript App",
   "keywords": [
     "angular2",<% if (systemjs) { %>

@@ -9,10 +9,10 @@ Status: Work In Progress
 
 ## Installation
 
-You need to have [Node.js](https://nodejs.org/en/) installed on your machine before running the followings:
+You need to have latest version of [Node.js](https://nodejs.org/en/) installed on your machine before running the followings:
 
 ```bash
-$ npm install yo generator-angular2-typescript -g
+npm install yo generator-angular2-typescript -g
 ```
 
 Make a new directory, and cd into it:
@@ -22,8 +22,11 @@ mkdir my-new-project && cd $_
 
 Run yo angular2-typescript, optionally passing an app name:
 ```bash
-$ yo angular2-typescript [app-name]
+yo angular2-typescript [app-name]
 ```
+
+## Features
+* Generate LICENSE file
 
 ## License
 The MIT License (MIT)
