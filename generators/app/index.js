@@ -105,11 +105,15 @@ module.exports = generators.Base.extend({
         }
 
         if(this.webpack) {
-            this.template('root/webpack.config.js', 'webpack.config.js');
             this.template('root/config/helpers.js', 'config/helpers.js');
+            this.template('root/config/karma.conf.js', 'karma.conf.js');
+            this.template('root/config/karma-test-shim.js', 'config/karma-test-shim.js');
+
+            this.template('root/webpack.config.js', 'webpack.config.js');
             this.template('root/config/webpack.common.js', 'config/webpack.common.js');
             this.template('root/config/webpack.dev.js', 'config/webpack.dev.js');
             this.template('root/config/webpack.prod.js', 'config/webpack.prod.js');
+            this.template('root/config/webpack.test.js', 'config/webpack.test.js');
 
             this.template('src/polyfills.ts', 'src/polyfills.ts');
             this.template('src/vendor.ts', 'src/vendor.ts');
@@ -121,12 +125,15 @@ module.exports = generators.Base.extend({
 
         this.template('src/app/app.component.ts', 'src/app/app.component.ts');
         this.template('src/app/app.component.html', 'src/app/app.component.html');
+        this.template('src/app/app.component.spec.ts', 'src/app/app.component.spec.ts');
 
         this.template('src/app/home/home.component.ts', 'src/app/home/home.component.ts');
         this.template('src/app/home/home.component.html', 'src/app/home/home.component.html');
+        this.template('src/app/home/home.component.spec.ts', 'src/app/home/home.component.spec.ts');
 
         this.template('src/app/about/about.component.ts', 'src/app/about/about.component.ts');
         this.template('src/app/about/about.component.html', 'src/app/about/about.component.html');
+        this.template('src/app/about/about.component.spec.ts', 'src/app/about/about.component.spec.ts');
     },
 
     conflicts: function() {},

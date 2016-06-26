@@ -1,5 +1,5 @@
 ## Angular2-TypeScript generator
-Yeoman generator for scaffold out a front-end project with Angular2 and TypeScript
+> Yeoman generator for scaffold out a front-end project with Angular2 and TypeScript
 
 [![Build Status](https://travis-ci.org/shibbir/generator-angular2-typescript.svg?branch=master)](https://travis-ci.org/shibbir/generator-angular2-typescript)
 [![Dependency Status](https://david-dm.org/shibbir/generator-angular2-typescript.svg)](https://david-dm.org/shibbir/generator-angular2-typescript)
