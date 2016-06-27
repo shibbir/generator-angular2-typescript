@@ -13,24 +13,24 @@
     };
 
     var ngPackageNames = [
-        '@angular/core',
-        '@angular/common',
-        '@angular/compiler',
-        '@angular/platform-browser',
-        '@angular/platform-browser-dynamic',
-        '@angular/router',
-        '@angular/router-deprecated'<% if (additionalPackages['@angular/http']) { %>,
-        '@angular/http'<% } %>
+        'core',
+        'common',
+        'compiler',
+        'platform-browser',
+        'platform-browser-dynamic',
+        'router',
+        'router-deprecated'<% if (angularPackages['@angular/http']) { %>,
+        'http'<% } %>
     ];
 
     // Individual files (~300 requests):
     function packIndex(pkgName) {
-        packages[pkgName] = { main: 'index.js', defaultExtension: 'js' };
+        packages['@angular/' + pkgName] = { main: 'index.js', defaultExtension: 'js' };
     }
 
     // Bundled (~40 requests):
     function packUmd(pkgName) {
-        packages[pkgName] = { main: '/bundles/' + pkgName + '.umd.js', defaultExtension: 'js' };
+        packages['@angular/' + pkgName] = { main: '/bundles/' + pkgName + '.umd.js', defaultExtension: 'js' };
     }
 
     // Most environments should use UMD; some (Karma) need the individual index files

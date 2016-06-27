@@ -25,28 +25,15 @@ Run yo angular2-typescript, optionally passing an app name:
 yo angular2-typescript [app-name]
 ```
 
-## Features
-* Generate LICENSE file
+That'll generate a project including:
+- Filled `package.json` file
+- [gulp](http://gulpjs.com/) task runner
+- CSS: [Bootstrap](http://getbootstrap.com/), [Foundation](http://foundation.zurb.com/) or plain css
+- Module loader: [Webpack](https://webpack.github.io/) or [SystemJS](https://github.com/systemjs/systemjs)
+- [mocha](http://mochajs.org/) unit test
+- [ESLInt](http://eslint.org/) linting and code style checking
+- [Istanbul](https://gotwarlost.github.io/istanbul/) code coverage
+- [License](https://spdx.org/licenses/)
 
 ## License
-The MIT License (MIT)
-Copyright (c) 2016 Shibbir Ahmed
-
-Permission is hereby granted, free of charge, to any person obtaining
-a copy of this software and associated documentation files (the
-'Software'), to deal in the Software without restriction, including
-without limitation the rights to use, copy, modify, merge, publish,
-distribute, sublicense, and/or sell copies of the Software, and to
-permit persons to whom the Software is furnished to do so, subject to
-the following conditions:
-
-The above copyright notice and this permission notice shall be
-included in all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND,
-EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
-MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
-IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
-CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
-TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
-SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+<a href="https://opensource.org/licenses/MIT">The MIT License</a> Copyright (c) 2016 Shibbir Ahmed

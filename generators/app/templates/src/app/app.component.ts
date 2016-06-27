@@ -2,7 +2,9 @@ import {Component} from '@angular/core';
 import {Route, RouteConfig, ROUTER_DIRECTIVES} from '@angular/router-deprecated';
 
 import {HomeComponent} from './home/home.component';
-import {AboutComponent} from './about/about.component';
+import {AboutComponent} from './about/about.component';<% if (webpack) { %>
+
+import '../styles.css';<% } %>
 
 @Component({
     selector: 'my-app',

@@ -38,8 +38,12 @@ module.exports = generators.Base.extend({
                 message : 'Which module loader would you like to use?',
                 choices: [{
                     value   : 'webpack',
-                    name    : 'webpack',
+                    name    : 'Webpack',
                     checked : true
+                }, {
+                    value   : 'systemjs',
+                    name    : 'SystemJS',
+                    checked : false
                 }]
             },
             {
@@ -63,7 +67,7 @@ module.exports = generators.Base.extend({
                 this.systemjs = true;
             }
 
-            this.angularPackages = answers.angularPackages;
+            answers.angularPackages.forEach(p => this.angularPackages[p] = p);
 
             done();
         }.bind(this));
@@ -72,6 +76,7 @@ module.exports = generators.Base.extend({
     configuring: function() {
         this.template('root/gitignore', '.gitignore');
         this.template('root/gitattributes', '.gitattributes');
+        this.template('root/gulpfile.js', 'gulpfile.js');
         this.template('root/.editorconfig', '.editorconfig');
         this.template('root/tsconfig.json', 'tsconfig.json');
         this.template('root/_tslint.json', 'tslint.json');
@@ -91,17 +96,9 @@ module.exports = generators.Base.extend({
 
     writing: function() {
         if(this.systemjs) {
-            let additionalPackages = [];
-
-            this.angularPackages.forEach(function(p) {
-                additionalPackages[p] = p;
-            });
-
-            this.template('root/systemjs.config.js', 'src/systemjs.config.js', {
-                additionalPackages: additionalPackages
-            });
-
+            this.template('root/systemjs.config.js', 'src/systemjs.config.js');
             this.template('root/bs-config.json', 'bs-config.json');
+            this.template('src/main.ts', 'src/app/main.ts');
         }
 
         if(this.webpack) {
@@ -117,11 +114,11 @@ module.exports = generators.Base.extend({
 
             this.template('src/polyfills.ts', 'src/polyfills.ts');
             this.template('src/vendor.ts', 'src/vendor.ts');
+            this.template('src/main.ts', 'src/main.ts');
         }
 
         this.template('src/index.html', 'src/index.html');
-
-        this.template('src/main.ts', 'src/main.ts');
+        this.template('src/styles.css', 'src/styles.css');
 
         this.template('src/app/app.component.ts', 'src/app/app.component.ts');
         this.template('src/app/app.component.html', 'src/app/app.component.html');
