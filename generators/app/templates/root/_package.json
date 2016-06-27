@@ -10,6 +10,7 @@
   ],
   "scripts": {
     "postinstall": "./node_modules/.bin/typings install",
+    "lint": "tslint \"src/**/*.ts\"",
     "start": "gulp"<% if (systemjs) { %>,
     "lite": "lite-server",
     "tsc": "tsc",
@@ -40,7 +41,7 @@
     "concurrently": "^2.0.0",<% if (systemjs) { %>
     "lite-server": "^2.2.2",
     "systemjs": "0.19.27",<% } %>
-    "tslint": "^3.10.2",
+    "tslint": "^3.12.1",
     "typescript": "^1.8.10",
     "typings": "^1.3.0" <% if (webpack) { %>,
     "css-loader": "^0.23.1",

@@ -8,7 +8,7 @@ import '../styles.css';<% } %>
 
 @Component({
     selector: 'my-app',
-    <% if (webpack) { %>template: require('./app.component.html'), <% } else { %>templateUrl: './app/app.component.html',<% } %>
+    <% if (webpack) { %>template: require('./app.component.html'),<% } else { %>templateUrl: './app/app.component.html',<% } %>
     directives: [ROUTER_DIRECTIVES]
 })
 
