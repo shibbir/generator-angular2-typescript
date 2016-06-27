@@ -21,6 +21,7 @@ module.exports = generators.Base.extend({
         this.webpack = null;
         this.systemjs = null;
         this.bootstrap = null;
+        this.foundation = null;
     },
 
     prompting: function() {
@@ -28,9 +29,18 @@ module.exports = generators.Base.extend({
 
         let prompts = [
             {
-                type    : 'confirm',
-                name    : 'bootstrap',
-                message : 'Would you like to use bootstrap?'
+                type    : 'list',
+                name    : 'css',
+                message : 'Which CSS framework would you like to use?',
+                choices : [{
+                    value   : 'bootstrap',
+                    name    : 'Bootstrap',
+                    checked : true
+                }, {
+                    value   : 'foundation',
+                    name    : 'Foundation',
+                    checked : false
+                }]
             },
             {
                 type    : 'list',
@@ -59,7 +69,11 @@ module.exports = generators.Base.extend({
         ];
 
         this.prompt(prompts).then(function(answers) {
-            this.bootstrap = answers.bootstrap ? 'bootstrap' : false;
+            if(answers.css === 'bootstrap') {
+                this.bootstrap = true;
+            } else if(answers.css === 'foundation') {
+                this.foundation = true;
+            }
 
             if(answers.moduleLoader === 'webpack') {
                 this.webpack = true;

@@ -28,7 +28,7 @@ yo angular2-typescript [app-name]
 That'll generate a project including:
 - Filled `package.json` file
 - [gulp](http://gulpjs.com/) task runner
-- CSS: [Bootstrap](http://getbootstrap.com/), [Foundation](http://foundation.zurb.com/) or plain css
+- CSS: [Bootstrap](http://getbootstrap.com/) or [Foundation](http://foundation.zurb.com/)
 - Module loader: [Webpack](https://webpack.github.io/) or [SystemJS](https://github.com/systemjs/systemjs)
 - [mocha](http://mochajs.org/) unit test
 - [ESLInt](http://eslint.org/) linting and code style checking

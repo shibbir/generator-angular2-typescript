@@ -2,7 +2,7 @@
     <div class="container">
         <div class="navbar-header">
             <a [routerLink]="['Home']" class="navbar-brand">
-                Home
+                <%= appname %>
             </a>
         </div>
 
@@ -10,10 +10,23 @@
             <li><a [routerLink]="['About']">About</a></li>
         </ul>
     </div>
-</nav><% } %><% if (!bootstrap) { %>
-<a [routerLink]="['Home']">Home</a>
-<a [routerLink]="['About']">About</a>
-<% } %>
+</nav><% } %><% if (foundation) { %><div id="widemenu" class="top-bar">
+    <div class="top-bar-left">
+        <ul class="menu">
+            <li class="menu-text">
+                <a [routerLink]="['Home']">
+                    <%= appname %>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <div class="top-bar-right">
+        <ul class="menu">
+            <li><a [routerLink]="['About']">About</a></li>
+        </ul>
+    </div>
+</div><% } %>
+
 <div class="container">
     <router-outlet></router-outlet>
 </div>

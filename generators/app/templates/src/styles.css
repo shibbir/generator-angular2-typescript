@@ -1,4 +1,20 @@
-body {
+<% if (bootstrap) { %>body {
     padding-top: 70px;
     padding-bottom: 70px;
+}<% } %><% if (foundation) { %>#widemenu.top-bar, #widemenu.top-bar ul {
+    padding: 0 !important;
+    background-color: #333 !important;
 }
+
+#widemenu .menu a {
+    height: 45px;
+    color: #e6e6e6;
+    font-size: 0.8125rem;
+    line-height: 45px !important;
+    padding-bottom: 0 !important;
+    padding-top: 0 !important;
+}
+
+#widemenu .menu-text {
+    padding: 0 !important;
+}<% } %>
