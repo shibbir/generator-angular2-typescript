@@ -110,24 +110,24 @@ module.exports = generators.Base.extend({
 
     writing: function() {
         if(this.systemjs) {
-            this.template('root/systemjs.config.js', 'src/systemjs.config.js');
-            this.template('root/bs-config.json', 'bs-config.json');
+            this.template('systemjs/src/systemjs.config.js', 'src/systemjs.config.js');
+            this.template('systemjs/bs-config.json', 'bs-config.json');
             this.template('src/main.ts', 'src/app/main.ts');
         }
 
         if(this.webpack) {
-            this.template('root/config/helpers.js', 'config/helpers.js');
-            this.template('root/config/karma.conf.js', 'karma.conf.js');
-            this.template('root/config/karma-test-shim.js', 'config/karma-test-shim.js');
+            this.template('webpack/config/helpers.js', 'config/helpers.js');
+            this.template('webpack/karma.conf.js', 'karma.conf.js');
+            this.template('webpack/config/karma-test-shim.js', 'config/karma-test-shim.js');
 
-            this.template('root/webpack.config.js', 'webpack.config.js');
-            this.template('root/config/webpack.common.js', 'config/webpack.common.js');
-            this.template('root/config/webpack.dev.js', 'config/webpack.dev.js');
-            this.template('root/config/webpack.prod.js', 'config/webpack.prod.js');
-            this.template('root/config/webpack.test.js', 'config/webpack.test.js');
+            this.template('webpack/webpack.config.js', 'webpack.config.js');
+            this.template('webpack/config/webpack.common.js', 'config/webpack.common.js');
+            this.template('webpack/config/webpack.dev.js', 'config/webpack.dev.js');
+            this.template('webpack/config/webpack.prod.js', 'config/webpack.prod.js');
+            this.template('webpack/config/webpack.test.js', 'config/webpack.test.js');
 
-            this.template('src/polyfills.ts', 'src/polyfills.ts');
-            this.template('src/vendor.ts', 'src/vendor.ts');
+            this.template('webpack/src/polyfills.ts', 'src/polyfills.ts');
+            this.template('webpack/src/vendor.ts', 'src/vendor.ts');
             this.template('src/main.ts', 'src/main.ts');
         }
 
