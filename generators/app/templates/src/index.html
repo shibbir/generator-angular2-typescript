@@ -4,14 +4,17 @@
     <base href="/">
     <title><%= appname %></title>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1"><% if (bootstrap) { %>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"><% } %><% if (foundation) { %>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/foundation/6.2.1/foundation.min.css"><% } %><% if (systemjs) { %>
+    <meta name="viewport" content="width=device-width, initial-scale=1"><% if (systemjs) { %>
+    <% if (foundation) { %>
+    <link rel="stylesheet" href="node_modules/foundation-sites/dist/foundation.css"><% } %><% if (bootstrap) { %>
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.css"><% } %>
     <link rel="stylesheet" href="styles.css"><% } %>
 </head>
 <body>
     <my-app>Loading...</my-app><% if(systemjs) { %>
-
+    <script src="node_modules/jquery/dist/jquery.js"></script><% if(bootstrap) { %>
+    <script src="node_modules/bootstrap/dist/js/bootstrap.js"></script><% } %><% if(foundation) { %>
+    <script src="node_modules/foundation-sites/dist/foundation.js"></script><% } %>
     <script src="node_modules/core-js/client/shim.min.js"></script>
     <script src="node_modules/zone.js/dist/zone.js"></script>
     <script src="node_modules/reflect-metadata/Reflect.js"></script>

@@ -4,6 +4,7 @@ import {Route, RouteConfig, ROUTER_DIRECTIVES} from '@angular/router-deprecated'
 import {HomeComponent} from './home/home.component';
 import {AboutComponent} from './about/about.component';<% if (webpack) { %>
 
+<% if (bootstrap) { %>import 'bootstrap/dist/css/bootstrap.css';<% } %><% if (foundation) { %>import 'foundation-sites/dist/foundation.css';<% } %>
 import '../styles.css';<% } %>
 
 @Component({
