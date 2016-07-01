@@ -18,8 +18,7 @@
         'compiler',
         'platform-browser',
         'platform-browser-dynamic',
-        'router',
-        'router-deprecated'<% if (angularPackages['@angular/http']) { %>,
+        'router'<% if (angularPackages['@angular/http']) { %>,
         'http'<% } %>
     ];
 

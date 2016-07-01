@@ -1,6 +1,6 @@
 {
   "name": "generator-angular2-typescript",
-  "version": "0.0.12",
+  "version": "0.0.13",
   "description": "Scaffold out a front-end project with angular2, typescript and much more..",
   "keywords": [
     "yeoman-generator",
@@ -10,7 +10,7 @@
     "webpack"
   ],
   "scripts": {
-    "lint": "./node_modules/.bin/eslint ./ --ignore-pattern .gitignore"
+    "lint": "eslint ./ --ignore-pattern .gitignore"
   },
   "engines": {
     "node": "6.2.0"

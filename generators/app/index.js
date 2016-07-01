@@ -135,6 +135,7 @@ module.exports = generators.Base.extend({
         this.template('src/styles.css', 'src/styles.css');
 
         this.template('src/app/app.component.ts', 'src/app/app.component.ts');
+        this.template('src/app/app.routes.ts', 'src/app/app.routes.ts');
         this.template('src/app/app.component.html', 'src/app/app.component.html');
         this.template('src/app/app.component.spec.ts', 'src/app/app.component.spec.ts');
 
