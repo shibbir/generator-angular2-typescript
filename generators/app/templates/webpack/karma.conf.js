@@ -12,9 +12,9 @@ module.exports = function (config) {
 
         webpack: require('./config/webpack.test'),
 
-        webpackMiddleware: {
-            stats: 'errors-only'
-        },
+        webpackMiddleware: { stats: 'errors-only' },
+
+        webpackServer: { noInfo: true },
 
         coverageReporter: {
             dir : 'coverage/',
@@ -25,8 +25,6 @@ module.exports = function (config) {
                 { type: 'lcovonly', subdir: 'PhantomJS' }
             ]
         },
-
-        webpackServer: { noInfo: true },
 
         reporters: [ 'mocha', 'coverage' ],
         port: 9876,

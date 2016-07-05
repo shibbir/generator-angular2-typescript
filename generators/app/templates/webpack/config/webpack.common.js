@@ -44,13 +44,13 @@ module.exports = {
     plugins: [
         new webpack.optimize.CommonsChunkPlugin({
             name: ['app', 'vendor', 'polyfills']
-        }),
+        }),<% if(jquery) { %>
 
         new webpack.ProvidePlugin({
             $: 'jquery',
             jQuery: 'jquery',
             'window.jQuery': 'jquery'
-        }),
+        }),<% } %>
 
         new HtmlWebpackPlugin({
             template: 'src/index.html'

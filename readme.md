@@ -1,6 +1,8 @@
 ## Angular2-TypeScript generator
 > Yeoman generator for scaffold out a front-end project with Angular2 and TypeScript
 
+[![NPM](https://nodei.co/npm/generator-angular2-typescript.png?compact=true)](https://nodei.co/npm/generator-angular2-typescript/)
+
 [![Build Status](https://travis-ci.org/shibbir/generator-angular2-typescript.svg?branch=master)](https://travis-ci.org/shibbir/generator-angular2-typescript)
 [![Dependency Status](https://david-dm.org/shibbir/generator-angular2-typescript.svg)](https://david-dm.org/shibbir/generator-angular2-typescript)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](http://opensource.org/licenses/MIT)
@@ -37,4 +39,4 @@ That'll generate a project including:
 - [License](https://spdx.org/licenses/)
 
 ## License
-<a href="https://opensource.org/licenses/MIT">The MIT License</a> Copyright (c) 2016 Shibbir Ahmed
+<a href="https://opensource.org/licenses/MIT">The MIT License</a> Copyright &copy; 2016 Shibbir Ahmed

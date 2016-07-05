@@ -11,8 +11,8 @@
     <link rel="stylesheet" href="styles.css"><% } %>
 </head>
 <body>
-    <my-app>Loading...</my-app><% if(systemjs) { %>
-    <script src="node_modules/jquery/dist/jquery.js"></script><% if(bootstrap) { %>
+    <my-app>Loading...</my-app><% if(systemjs) { %><% if(jquery) { %>
+    <script src="node_modules/jquery/dist/jquery.js"></script><% } %><% if(bootstrap) { %>
     <script src="node_modules/bootstrap/dist/js/bootstrap.js"></script><% } %><% if(foundation) { %>
     <script src="node_modules/foundation-sites/dist/foundation.js"></script><% } %>
     <script src="node_modules/core-js/client/shim.min.js"></script>

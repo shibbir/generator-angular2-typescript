@@ -1,56 +1,16 @@
-<% if (bootstrap) { %><div class="container">
-    <nav class="navbar navbar-default">
-        <div class="container-fluid">
-            <div class="navbar-header">
-                <a class="navbar-brand" href="javascript:void(0)"><%= appname %></a>
-            </div>
+<div class="header-container">
+    <header>
+        <h1 class="title">My Angular2 + TypeScript App</h1>
+    </header>
+</div>
 
-            <div class="collapse navbar-collapse">
-                <ul class="nav navbar-nav navbar-right">
-                    <li class="active"><a [routerLink]="['']">Home</a></li>
-                    <li><a [routerLink]="['/about']">About</a></li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-
-    <div class="jumbotron">
-        <h1>Angular2 + TypeScript!</h1>
-        <p class="lead">Your basic scaffolded apps.</p>
-    </div>
-
+<div class="main-container">
     <router-outlet></router-outlet>
-
-    <hr>
-
-    <div class="footer">
-        <p>&copy; 2016</p>
-    </div>
-</div><% } %><% if (foundation) { %><div class="row top-bar">
-    <div class="top-bar-left">
-        <ul class="menu">
-            <li class="menu-text"><%= appname %></li>
-        </ul>
-    </div>
-    <div class="top-bar-right">
-        <ul class="menu">
-            <li><a class="button"[routerLink]="['']">Home</a></li>
-            <li><a class="button"[routerLink]="['/about']">About</a></li>
-        </ul>
-    </div>
 </div>
 
-<div class="row">
-    <div class="callout">
-        <h2>Angular2 + TypeScript!</h2>
-        <p>Always a pleasure scaffolding your apps.</p>
-    </div>
+<div class="footer-container">
+    <footer>
+        <a [routerLink]="['']">Home</a> | <a [routerLink]="['/about']">About</a>
+        <span>&copy; 2016</span>
+    </footer>
 </div>
-
-<router-outlet></router-outlet>
-
-<hr>
-
-<div class="row">
-    <p>&copy; 2016</p>
-</div><% } %>

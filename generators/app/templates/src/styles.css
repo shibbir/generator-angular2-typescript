@@ -1,3 +1,54 @@
-<% if (bootstrap) { %>body {
-    padding-top: 20px;
-}<% } %>
+body {
+    font-family: Cambria, Georgia;
+}
+
+h1 {
+    color: #369;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 250%;
+    font-weight: bold;
+    margin-top: 30px;
+    margin-bottom: 22px;
+}
+
+a {
+    text-decoration: none;
+    color: #337ab7;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.header-container, .main-container, .footer-container {
+    width: 700px;
+    margin: 0 auto;
+}
+
+.main-container {
+    margin-bottom: 20px;
+    box-shadow: 0 1px 4px 0 rgba(0,0,0,0.37);
+}
+
+.main-container .resource, .main-container h3 {
+    padding: 16px 23px;
+}
+
+.main-container h3 {
+    margin: 0;
+    color: #373E41;
+    font-size: 20px;
+    font-weight: bold;
+    background-color: #ECEFF1;
+}
+
+.main-container h4 {
+    margin: 0;
+    font-size: 16px;
+    font-weight: bold;
+    line-height: 24px;
+}
+
+.main-container p {
+    margin: 0;
+}

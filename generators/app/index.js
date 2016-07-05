@@ -22,6 +22,7 @@ module.exports = generators.Base.extend({
         this.systemjs = null;
         this.bootstrap = null;
         this.foundation = null;
+        this.jquery = null;
     },
 
     prompting: function() {
@@ -33,9 +34,13 @@ module.exports = generators.Base.extend({
                 name    : 'css',
                 message : 'Which CSS framework would you like to use?',
                 choices : [{
+                    value   : 'none',
+                    name    : 'None',
+                    checked : true
+                }, {
                     value   : 'bootstrap',
                     name    : 'Bootstrap',
-                    checked : true
+                    checked : false
                 }, {
                     value   : 'foundation',
                     name    : 'Foundation',
@@ -70,8 +75,10 @@ module.exports = generators.Base.extend({
 
         this.prompt(prompts).then(function(answers) {
             if(answers.css === 'bootstrap') {
+                this.jquery = true;
                 this.bootstrap = true;
             } else if(answers.css === 'foundation') {
+                this.jquery = true;
                 this.foundation = true;
             }
 
