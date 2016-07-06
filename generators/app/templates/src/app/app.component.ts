@@ -2,10 +2,10 @@ import {Component} from '@angular/core';
 import {ROUTER_DIRECTIVES} from '@angular/router';
 
 import {HomeComponent} from './home/home.component';
-import {AboutComponent} from './about/about.component';
-<% if (webpack && bootstrap || foundation) { %>
+import {AboutComponent} from './about/about.component';<% if (webpack) { %>
+<% if (bootstrap || foundation) { %>
 <% if (bootstrap) { %>import 'bootstrap/dist/css/bootstrap.css';<% } %><% if (foundation) { %>import 'foundation-sites/dist/foundation.css';<% } %><% } %>
-<% if (webpack) { %>import '../styles.css';<% } %>
+import '../styles.css';<% } %>
 
 @Component({
     selector: 'my-app',
