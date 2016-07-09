@@ -23,6 +23,7 @@ module.exports = generators.Base.extend({
         this.bootstrap = null;
         this.foundation = null;
         this.jquery = null;
+        this.gulp = null;
     },
 
     prompting: function() {
@@ -62,6 +63,11 @@ module.exports = generators.Base.extend({
                 }]
             },
             {
+                type    : 'confirm',
+                name    : 'gulp',
+                message : 'Would you like to use Gulp?'
+            },
+            {
                 type    : 'checkbox',
                 name    : 'angularPackages',
                 message : 'Which additional angular packages would you like to include?',
@@ -88,6 +94,10 @@ module.exports = generators.Base.extend({
                 this.systemjs = true;
             }
 
+            if(answers.gulp) {
+                this.gulp = true;
+            }
+
             answers.angularPackages.forEach(p => this.angularPackages[p] = p);
 
             done();
@@ -97,12 +107,15 @@ module.exports = generators.Base.extend({
     configuring: function() {
         this.template('root/gitignore', '.gitignore');
         this.template('root/gitattributes', '.gitattributes');
-        this.template('root/gulpfile.js', 'gulpfile.js');
         this.template('root/.editorconfig', '.editorconfig');
         this.template('root/tsconfig.json', 'tsconfig.json');
         this.template('root/_tslint.json', 'tslint.json');
         this.template('root/_typings.json', 'typings.json');
         this.template('root/_package.json', 'package.json');
+
+        if(this.gulp) {
+            this.template('root/gulpfile.js', 'gulpfile.js');
+        }
     },
 
     default: function() {

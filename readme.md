@@ -31,7 +31,7 @@ That'll generate a project including:
 
 - Configured `package.json` file
 - [Gulp](http://gulpjs.com/) task runner
-- Either [Bootstrap](http://getbootstrap.com/) or [Foundation](http://foundation.zurb.com/) integration
+- Plain CSS, [Bootstrap](http://getbootstrap.com/) or [Foundation](http://foundation.zurb.com/) integration
 - Either [Webpack](https://webpack.github.io/) or [SystemJS](https://github.com/systemjs/systemjs) integration
 - [Karma](https://karma-runner.github.io/) unit test runner
 - [TSLint](https://palantir.github.io/tslint/) linting for the TypeScript language

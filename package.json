@@ -1,6 +1,6 @@
 {
   "name": "generator-angular2-typescript",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Scaffold out a front-end project with angular2, typescript and much more..",
   "keywords": [
     "yeoman-generator",
@@ -36,6 +36,6 @@
     "yosay": "^1.2.0"
   },
   "devDependencies": {
-    "eslint": "^2.13.1"
+    "eslint": "^3.0.1"
   }
 }

@@ -9,14 +9,18 @@
     "webpack"<% } %>
   ],
   "scripts": {
+    "clean:dist": "rimraf dist",<% if (gulp) { %>
     "start": "gulp",
+    "build": "gulp build",<% } %>
     "postinstall": "typings install",
     "test": "karma start",
     "lint": "tslint \"src/**/*.ts\""<% if (systemjs) { %>,
-    "lite": "lite-server",
+    "lite": "lite-server",<% if (!gulp) { %>
+    "start": "tsc && concurrently \"npm run tsc:w\" \"npm run lite\" ",<% } %>
     "tsc": "tsc",
-    "tsc:w": "tsc -w"<% } if (webpack) { %>,
-    "build": "gulp build"<% } %>
+    "tsc:w": "tsc -w"<% } if (webpack && !gulp) { %>,
+    "start": "webpack-dev-server --inline --colors --progress --port 3000",
+    "build": "npm run clean:dist && webpack --config config/webpack.prod.js --progress --colors --profile --bail"<% } %>
   },
   "dependencies": {
     "@angular/common": "^2.0.0-rc.4",
@@ -36,12 +40,12 @@
     "zone.js": "^0.6.12"
   },
   "devDependencies": {
-    "codelyzer": "0.0.19",
+    "codelyzer": "0.0.19",<% if (gulp) { %>
     "gulp": "^3.9.1",
     "gulp-load-plugins": "^1.2.4",
     "gulp-shell": "^0.5.2",
+    "run-sequence": "^1.2.1",<% } %>
     "rimraf": "^2.5.2",
-    "run-sequence": "^1.2.1",
     "concurrently": "^2.0.0",<% if (systemjs) { %>
     "lite-server": "^2.2.2",
     "systemjs": "0.19.27",<% } %>
