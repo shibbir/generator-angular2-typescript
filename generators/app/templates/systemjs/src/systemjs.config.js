@@ -15,7 +15,8 @@
     var ngPackageNames = [
         'core',
         'common',
-        'compiler',
+        'compiler',<% if (angularPackages['@angular/forms']) { %>
+        'forms',<% } %>
         'platform-browser',
         'platform-browser-dynamic',
         'router'<% if (angularPackages['@angular/http']) { %>,

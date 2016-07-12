@@ -72,6 +72,10 @@ module.exports = generators.Base.extend({
                 name    : 'angularPackages',
                 message : 'Which additional angular packages would you like to include?',
                 choices: [{
+                    value   : '@angular/forms',
+                    name    : '@angular/forms',
+                    checked : false
+                }, {
                     value   : '@angular/http',
                     name    : '@angular/http',
                     checked : false
