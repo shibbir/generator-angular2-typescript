@@ -1,5 +1,5 @@
-import {bootstrap} from '@angular/platform-browser-dynamic';
-import {enableProdMode} from '@angular/core';<% if (angularPackages['@angular/forms']) { %>
+import {bootstrap} from '@angular/platform-browser-dynamic';<% if (webpack) { %>
+import {enableProdMode} from '@angular/core';<% } %><% if (angularPackages['@angular/forms']) { %>
 import {disableDeprecatedForms, provideForms} from '@angular/forms';<% } %><% if (angularPackages['@angular/http']) { %>
 import {HTTP_PROVIDERS} from '@angular/http';<% } %><% if (systemjs) { %>
 
