@@ -1,6 +1,6 @@
 {
   "name": "generator-angular2-typescript",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Scaffold out a front-end project with angular2, typescript and much more..",
   "keywords": [
     "yeoman-generator",
@@ -10,7 +10,8 @@
     "webpack"
   ],
   "scripts": {
-    "lint": "eslint ./ --ignore-pattern .gitignore"
+    "lint": "eslint ./ --ignore-pattern .gitignore",
+    "test": "mocha --reporter spec --timeout 3000"
   },
   "engines": {
     "node": "6.2.0"
@@ -36,6 +37,10 @@
     "yosay": "^1.2.0"
   },
   "devDependencies": {
-    "eslint": "^3.0.1"
+    "coveralls": "^2.11.11",
+    "eslint": "^3.0.1",
+    "mocha": "^2.5.3",
+    "yeoman-assert": "^2.2.1",
+    "yeoman-test": "^1.4.0"
   }
 }

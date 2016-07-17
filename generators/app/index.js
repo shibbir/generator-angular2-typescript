@@ -172,8 +172,6 @@ module.exports = generators.Base.extend({
         this.template('src/app/about/about.component.spec.ts', 'src/app/about/about.component.spec.ts');
     },
 
-    conflicts: function() {},
-
     install: function() {
         this.installDependencies({
             skipMessage: this.options['skip-install-message'],
@@ -181,7 +179,5 @@ module.exports = generators.Base.extend({
             bower: false,
             npm: true
         });
-    },
-
-    end: function() {}
+    }
 });

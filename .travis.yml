@@ -7,3 +7,9 @@ sudo: false
 
 branches:
   only: master
+
+before_script:
+  - npm install -g istanbul
+
+after_script:
+  - istanbul cover node_modules/mocha/bin/_mocha -- -R spec && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage

@@ -12,6 +12,7 @@
     "quotes": ["error", "single"]
   },
   "env": {
-    "node": true
+    "node": true,
+    "mocha": true
   }
 }
