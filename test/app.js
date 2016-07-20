@@ -1,22 +1,11 @@
 'use strict';
 
-var path = require('path');
-var helpers = require('yeoman-test');
 var assert = require('yeoman-assert');
+var generateFullProject = require('./utils').generateFullProject;
 
 describe('app:configuration', function() {
     before(function () {
-        return helpers.run(path.join(__dirname, '../generators/app'))
-            .withPrompts({
-                css: 'none',
-                moduleLoader: 'webpack',
-                gulp: false,
-                angularPackages: [],
-                name: 'John Doe',
-                email: 'john@doe.com',
-                website: '',
-                license: 'MIT'
-            }).toPromise();
+        return generateFullProject().toPromise();
     });
 
     it('should generate base files', function() {
@@ -29,5 +18,40 @@ describe('app:configuration', function() {
             'tslint.json',
             'typings.json'
         ]);
+    });
+
+    it('should not generate gulpfile.js', function () {
+        assert.noFile('gulpfile.js');
+    });
+
+    it('shoud generate generic source files', function() {
+        assert.file([
+            'src/index.html',
+            'src/styles.css',
+
+            'src/app/app.component.ts',
+            'src/app/app.routes.ts',
+            'src/app/app.component.html',
+            'src/app/app.component.spec.ts',
+
+            'src/app/home/home.component.ts',
+            'src/app/home/home.component.html',
+            'src/app/home/home.component.spec.ts',
+
+            'src/app/about/about.component.ts',
+            'src/app/about/about.component.html',
+            'src/app/about/about.component.spec.ts'
+
+        ]);
+    });
+});
+
+describe('app:gulpfile', function () {
+    before(function () {
+        return generateFullProject().withPrompts({ gulp: true }).toPromise();
+    });
+
+    it('should generate gulpfile.js if gulp is selected', function () {
+        assert.file('gulpfile.js');
     });
 });

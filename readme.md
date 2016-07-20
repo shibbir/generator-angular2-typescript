@@ -39,5 +39,13 @@ That'll generate a project including:
 - [Istanbul](https://gotwarlost.github.io/istanbul/) code coverage
 - [License](https://spdx.org/licenses/)
 
+## Running Tests
+```bash
+npm test
+
+# Code coverage report
+npm run coverage
+```
+
 ## License
 <a href="https://opensource.org/licenses/MIT">The MIT License</a> Copyright &copy; 2016 Shibbir Ahmed
