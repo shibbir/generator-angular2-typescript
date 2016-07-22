@@ -8,7 +8,7 @@ describe('app:webpack', function() {
         return generateFullProject().withPrompts({ moduleLoader: 'webpack' }).toPromise();
     });
 
-    it('should generate webpack related files', function() {
+    it('generate webpack related files', function() {
         assert.file([
             'karma.conf.js',
             'config/karma-test-shim.js',

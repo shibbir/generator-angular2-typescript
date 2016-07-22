@@ -8,7 +8,7 @@ describe('app:readme', function() {
         return generateFullProject().toPromise();
     });
 
-    it('should generate readme.md file', function() {
+    it('generate readme.md file', function() {
         assert.file('readme.md');
     });
 });

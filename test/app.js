@@ -8,7 +8,7 @@ describe('app:configuration', function() {
         return generateFullProject().toPromise();
     });
 
-    it('should generate base files', function() {
+    it('generate base files', function() {
         assert.file([
             '.gitignore',
             '.gitattributes',
@@ -20,11 +20,11 @@ describe('app:configuration', function() {
         ]);
     });
 
-    it('should not generate gulpfile.js', function () {
+    it('gulpfile.js should not generated if not selected', function () {
         assert.noFile('gulpfile.js');
     });
 
-    it('shoud generate generic source files', function() {
+    it('generate generic source files', function() {
         assert.file([
             'src/index.html',
             'src/styles.css',
@@ -51,7 +51,13 @@ describe('app:gulpfile', function () {
         return generateFullProject().withPrompts({ gulp: true }).toPromise();
     });
 
-    it('should generate gulpfile.js if gulp is selected', function () {
+    it('generate gulpfile.js if gulp is selected', function () {
         assert.file('gulpfile.js');
+    });
+
+    it('reference gulp tasks via npm scripts in package.json', function () {
+        assert.fileContent('package.json', /"start": "gulp"/);
+        assert.fileContent('package.json', /"build": "gulp build"/);
+        assert.fileContent('package.json', /"test": "karma start"/);
     });
 });

@@ -8,12 +8,12 @@ describe('app:systemjs', function() {
         return generateFullProject().withPrompts({ moduleLoader: 'systemjs' }).toPromise();
     });
 
-    it('systemjs dependencies should be referenced in package.json', function() {
+    it('reference systemjs dependencies in package.json', function() {
         assert.fileContent('package.json', /"lite-server": "\^2.2.2"/);
         assert.fileContent('package.json', /"systemjs": "0.19.27"/);
     });
 
-    it('should generate systemjs related files', function() {
+    it('generate systemjs related files', function() {
         assert.file([
             'bs-config.json',
             'src/systemjs.config.js',
@@ -21,7 +21,7 @@ describe('app:systemjs', function() {
         ]);
     });
 
-    it('@angular dependencies should be referenced in src/index.html', function() {
+    it('reference @angular dependencies in src/index.html', function() {
         assert.fileContent('src/index.html', /<script src="node_modules\/core-js\/client\/shim.min.js"><\/script>/);
         assert.fileContent('src/index.html', /<script src="node_modules\/zone.js\/dist\/zone.js"><\/script>/);
         assert.fileContent('src/index.html', /<script src="node_modules\/reflect-metadata\/Reflect.js"><\/script>/);
