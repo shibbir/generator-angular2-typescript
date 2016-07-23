@@ -9,8 +9,7 @@ var paths = {
     <% if (systemjs) { %>src: [
         'src/**/*.html',
         'src/**/*.js',
-        'src/**/*.css',
-        'src/favicon.ico'
+        'src/**/*.css'
     ],
     <% } %>dist: 'dist'
 };<% if (systemjs) { %>
