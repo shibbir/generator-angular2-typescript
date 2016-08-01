@@ -10,7 +10,7 @@ describe('css:framework', function() {
         });
 
         it('reference bootstrap in package.json', function() {
-            assert.fileContent('package.json', /"bootstrap": "\^3.3.6"/);
+            assert.fileContent('package.json', /"bootstrap": "\^3.3.7"/);
         });
 
         it('import bootstrap.js in src/vendor.ts', function() {
