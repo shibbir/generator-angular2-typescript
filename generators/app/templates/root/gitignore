@@ -17,6 +17,7 @@ coverage
 # =======
 *.log
 dist
+typings
 
 # Editors
 # =======
