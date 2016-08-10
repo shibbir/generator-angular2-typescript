@@ -30,7 +30,8 @@ describe('app:configuration', function() {
             'src/styles.css',
 
             'src/app/app.component.ts',
-            'src/app/app.routes.ts',
+            'src/app/app.module.ts',
+            'src/app/app.routing.ts',
             'src/app/app.component.html',
             'src/app/app.component.spec.ts',
 
