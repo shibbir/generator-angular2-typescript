@@ -39,11 +39,11 @@ That'll generate a project including:
 - [Istanbul](https://gotwarlost.github.io/istanbul/) code coverage
 - [License](https://spdx.org/licenses/)
 
-## Running Tests
+## Running Unit Tests
 ```bash
 npm test
 
-# Code coverage report
+# Generate code coverage report
 npm run coverage
 ```
 

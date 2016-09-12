@@ -1,11 +1,12 @@
-import {addProviders, inject} from '@angular/core/testing';
+import {TestBed} from '@angular/core/testing';
 
 import {HomeComponent} from './home.component';
 
 describe('HomeComponent', () => {
-    beforeEach(() => addProviders([HomeComponent]));
+    beforeEach(() => TestBed.configureTestingModule({ declarations: [HomeComponent] }));
 
-    it('should create the Home component', inject([HomeComponent], (app: HomeComponent) => {
-        expect(app).toBeTruthy();
-    }));
+    it('should instantiate the HomeComponent', () => {
+        let fixture = TestBed.createComponent(HomeComponent);
+        expect(fixture.componentInstance instanceof HomeComponent).toBe(true, 'should create HomeComponent');
+    });
 });

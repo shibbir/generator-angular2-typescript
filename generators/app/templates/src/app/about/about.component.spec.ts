@@ -1,11 +1,12 @@
-import {addProviders, inject} from '@angular/core/testing';
+import {TestBed} from '@angular/core/testing';
 
 import {AboutComponent} from './about.component';
 
 describe('AboutComponent', () => {
-    beforeEach(() => addProviders([AboutComponent]));
+    beforeEach(() => TestBed.configureTestingModule({ declarations: [AboutComponent] }));
 
-    it('should create the About component', inject([AboutComponent], (app: AboutComponent) => {
-        expect(app).toBeTruthy();
-    }));
+    it('should instantiate the AboutComponent', () => {
+        let fixture = TestBed.createComponent(AboutComponent);
+        expect(fixture.componentInstance instanceof AboutComponent).toBe(true, 'should create AboutComponent');
+    });
 });

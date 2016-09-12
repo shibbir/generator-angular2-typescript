@@ -1,9 +1,19 @@
 (function(global) {
-    // map tells the System loader where to look for things
+    var paths = {
+        'npm:': 'node_modules/'
+    };
+
     var map = {
         'app': 'app',
-        '@angular': 'node_modules/@angular',
-        'rxjs': 'node_modules/rxjs'
+        '@angular/core': 'npm:@angular/core/bundles/core.umd.js',
+        '@angular/common': 'npm:@angular/common/bundles/common.umd.js',
+        '@angular/compiler': 'npm:@angular/compiler/bundles/compiler.umd.js',
+        '@angular/platform-browser': 'npm:@angular/platform-browser/bundles/platform-browser.umd.js',
+        '@angular/platform-browser-dynamic': 'npm:@angular/platform-browser-dynamic/bundles/platform-browser-dynamic.umd.js',<% if (angularPackages['@angular/http']) { %>
+        '@angular/http': 'npm:@angular/http/bundles/http.umd.js',<% } %>
+        '@angular/router': 'npm:@angular/router/bundles/router.umd.js',<% if (angularPackages['@angular/forms']) { %>
+        '@angular/forms': 'npm:@angular/forms/bundles/forms.umd.js',<% } %>
+        'rxjs': 'npm:rxjs'
     };
 
     // packages tells the System loader how to load when no filename and/or no extension
@@ -12,34 +22,8 @@
         rxjs: { defaultExtension: 'js' }
     };
 
-    var ngPackageNames = [
-        'core',
-        'common',
-        'compiler',<% if (angularPackages['@angular/forms']) { %>
-        'forms',<% } %>
-        'platform-browser',
-        'platform-browser-dynamic',
-        'router'<% if (angularPackages['@angular/http']) { %>,
-        'http'<% } %>
-    ];
-
-    // Individual files (~300 requests):
-    function packIndex(pkgName) {
-        packages['@angular/' + pkgName] = { main: 'index.js', defaultExtension: 'js' };
-    }
-
-    // Bundled (~40 requests):
-    function packUmd(pkgName) {
-        packages['@angular/' + pkgName] = { main: '/bundles/' + pkgName + '.umd.js', defaultExtension: 'js' };
-    }
-
-    // Most environments should use UMD; some (Karma) need the individual index files
-    var setPackageConfig = System.packageWithIndex ? packIndex : packUmd;
-
-    // Add package entries for angular packages
-    ngPackageNames.forEach(setPackageConfig);
-
     var config = {
+        paths: paths,
         map: map,
         packages: packages
     };
