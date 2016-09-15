@@ -23,21 +23,21 @@
     "build": "rimraf dist && webpack --config config/webpack.prod.js --progress --colors --profile --bail"<% } %>
   },
   "dependencies": {
-    "@angular/common": "2.0.0-rc.7",
-    "@angular/compiler": "2.0.0-rc.7",
-    "@angular/core": "2.0.0-rc.7",<% if (angularPackages['@angular/forms']) { %>
-    "@angular/forms": "2.0.0-rc.7",<% } %><% if (angularPackages['@angular/http']) { %>
-    "@angular/http": "2.0.0-rc.7",<% } %>
-    "@angular/platform-browser": "2.0.0-rc.7",
-    "@angular/platform-browser-dynamic": "2.0.0-rc.7",
-    "@angular/router": "3.0.0-rc.3",<% if (bootstrap) { %>
+    "@angular/common": "2.0.0",
+    "@angular/compiler": "2.0.0",
+    "@angular/core": "2.0.0",<% if (angularPackages['@angular/forms']) { %>
+    "@angular/forms": "2.0.0",<% } %><% if (angularPackages['@angular/http']) { %>
+    "@angular/http": "2.0.0",<% } %>
+    "@angular/platform-browser": "2.0.0",
+    "@angular/platform-browser-dynamic": "2.0.0",
+    "@angular/router": "3.0.0",<% if (bootstrap) { %>
     "bootstrap": "^3.3.7",<% } %>
     "core-js": "^2.4.1",<% if (foundation) { %>
     "foundation-sites": "^6.2.3",<% } %><% if (jquery) { %>
     "jquery": "^2.2.4",<% } %>
-    "reflect-metadata": "0.1.3",
+    "reflect-metadata": "^0.1.3",
     "rxjs": "5.0.0-beta.12",
-    "zone.js": "^0.6.21"
+    "zone.js": "^0.6.23"
   },
   "devDependencies": {
     "codelyzer": "0.0.19",<% if (gulp) { %>
@@ -51,7 +51,7 @@
     "lite-server": "^2.2.2",
     "systemjs": "0.19.27",<% } %>
     "tslint": "^3.13.0",
-    "typescript": "^1.8.10",
+    "typescript": "^2.0.2",
     "typings": "^1.3.2" <% if (webpack) { %>,
     "css-loader": "^0.23.1",
     "extract-text-webpack-plugin": "^1.0.1",
