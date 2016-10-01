@@ -1,6 +1,6 @@
 (function(global) {
     var paths = {
-        'npm:': 'node_modules/'
+        'npm:': '/node_modules/'
     };
 
     var map = {

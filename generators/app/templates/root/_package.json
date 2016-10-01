@@ -9,18 +9,18 @@
     "webpack"<% } %>
   ],
   "scripts": {
-    "lint": "tslint \"src/**/*.ts\"",<% if (gulp) { %>
-    "start": "gulp",
-    "build": "gulp build",<% } %>
-    "postinstall": "typings install",
-    "test": "karma start"<% if (systemjs) { %>,
-    "lite": "lite-server",<% if (!gulp) { %>
-    "copy:src": "copyfiles -u 1 src/**/*.js src/**/*.css src/**/*.html dist",
-    "start": "rimraf dist && npm run copy:src && tsc && concurrently \"npm run tsc:w\" \"npm run lite\" ",<% } %>
-    "tsc": "tsc",
-    "tsc:w": "tsc -w"<% } if (webpack && !gulp) { %>,
+    "lint": "tslint \"src/**/*.ts\"",
+    "postinstall": "typings install",<% if (systemjs) { %>
+    "start": "gulp serve:dev",
+    "build:dev": "gulp build:dev",
+    "build": "gulp build:prod",
+    "serve:prod": "gulp serve:prod"<% } if (webpack && !gulp) { %>
     "start": "webpack-dev-server --inline --colors --progress --port 3000",
-    "build": "rimraf dist && webpack --config config/webpack.prod.js --progress --colors --profile --bail"<% } %>
+    "build": "rimraf dist && webpack --config config/webpack.prod.js --progress --colors --profile --bail",
+    "test": "karma start"<% } if (webpack && gulp) { %>
+    "start": "gulp serve",
+    "build": "gulp build",
+    "test": "karma start"<% } %>
   },
   "dependencies": {
     "@angular/common": "2.0.0",
@@ -42,17 +42,24 @@
   "devDependencies": {
     "codelyzer": "0.0.19",<% if (gulp) { %>
     "gulp": "^3.9.1",
-    "gulp-load-plugins": "^1.2.4",
+    "gulp-load-plugins": "^1.3.0",
     "gulp-shell": "^0.5.2",
     "run-sequence": "^1.2.2",<% } %>
-    "rimraf": "^2.5.2",
-    "concurrently": "^2.2.0",<% if (systemjs) { %>
-    "copyfiles": "^1.0.0",
-    "lite-server": "^2.2.2",
-    "systemjs": "0.19.27",<% } %>
+    "rimraf": "^2.5.2",<% if (systemjs) { %>
+    "gulp-clean-css": "^2.0.12",
+    "gulp-concat": "^2.6.0",
+    "gulp-connect": "^5.0.0",
+    "gulp-inject": "^4.1.0",
+    "gulp-inline-ng2-template": "^3.0.1",
+    "gulp-sourcemaps": "^1.6.0",
+    "gulp-typescript": "^3.0.1",
+    "gulp-uglify": "^2.0.0",
+    "html-minifier": "^3.1.0",
+    "systemjs": "0.19.27",
+    "systemjs-builder": "^0.15.32",<% } %>
     "tslint": "^3.13.0",
-    "typescript": "^2.0.2",
-    "typings": "^1.3.2" <% if (webpack) { %>,
+    "typescript": "^2.0.3",
+    "typings": "^1.3.2"<% if (webpack) { %>,
     "css-loader": "^0.23.1",
     "extract-text-webpack-plugin": "^1.0.1",
     "file-loader": "^0.8.5",

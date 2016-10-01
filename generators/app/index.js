@@ -63,6 +63,12 @@ module.exports = generators.Base.extend({
                 }]
             },
             {
+                when: function (response) {
+                    if(response.moduleLoader === 'webpack') {
+                        return true;
+                    }
+                    return false;
+                },
                 type    : 'confirm',
                 name    : 'gulp',
                 message : 'Would you like to use Gulp?'
@@ -94,11 +100,12 @@ module.exports = generators.Base.extend({
 
             if(answers.moduleLoader === 'webpack') {
                 this.webpack = true;
+
+                if(answers.gulp) {
+                    this.gulp = true;
+                }
             } else if(answers.moduleLoader === 'systemjs') {
                 this.systemjs = true;
-            }
-
-            if(answers.gulp) {
                 this.gulp = true;
             }
 
@@ -116,10 +123,6 @@ module.exports = generators.Base.extend({
         this.template('root/_tslint.json', 'tslint.json');
         this.template('root/_typings.json', 'typings.json');
         this.template('root/_package.json', 'package.json');
-
-        if(this.gulp) {
-            this.template('root/gulpfile.js', 'gulpfile.js');
-        }
     },
 
     default: function() {
@@ -134,8 +137,8 @@ module.exports = generators.Base.extend({
 
     writing: function() {
         if(this.systemjs) {
-            this.template('systemjs/src/systemjs.config.js', 'src/systemjs.config.js');
-            this.template('systemjs/bs-config.json', 'bs-config.json');
+            this.template('systemjs/systemjs.config.js', 'src/systemjs.config.js');
+            this.template('systemjs/gulpfile.js', 'gulpfile.js');
             this.template('src/main.ts', 'src/app/main.ts');
         }
 
@@ -150,13 +153,17 @@ module.exports = generators.Base.extend({
             this.template('webpack/config/webpack.prod.js', 'config/webpack.prod.js');
             this.template('webpack/config/webpack.test.js', 'config/webpack.test.js');
 
-            this.template('webpack/src/polyfills.ts', 'src/polyfills.ts');
-            this.template('webpack/src/vendor.ts', 'src/vendor.ts');
+            this.template('webpack/polyfills.ts', 'src/polyfills.ts');
+            this.template('webpack/vendor.ts', 'src/vendor.ts');
             this.template('src/main.ts', 'src/main.ts');
+
+            if(this.gulp) {
+                this.template('webpack/gulpfile.js', 'gulpfile.js');
+            }
         }
 
         this.template('src/index.html', 'src/index.html');
-        this.template('src/styles.css', 'src/styles.css');
+        this.template('src/css/main.css', 'src/css/main.css');
 
         this.template('src/app/app.component.ts', 'src/app/app.component.ts');
         this.template('src/app/app.module.ts', 'src/app/app.module.ts');

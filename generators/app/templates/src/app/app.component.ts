@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';<% if (webpack) { %>
 <% if (bootstrap || foundation) { %>
 <% if (bootstrap) { %>import 'bootstrap/dist/css/bootstrap.css';<% } %><% if (foundation) { %>import 'foundation-sites/dist/foundation.css';<% } %><% } %>
-import '../styles.css';<% } %><% if(foundation) { %>
+import '../css/main.css';<% } %><% if(foundation) { %>
 
 declare let $: any;<% } %>
 

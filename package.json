@@ -1,6 +1,6 @@
 {
   "name": "generator-angular2-typescript",
-  "version": "0.8.1",
+  "version": "0.9.0",
   "description": "Scaffold out a front-end project with angular2, typescript and much more..",
   "keywords": [
     "yeoman-generator",
@@ -20,7 +20,7 @@
   "bugs": "https://github.com/shibbir/generator-angular2-typescript/issues",
   "author": {
     "name": "Shibbir Ahmed",
-    "email": "shibbir.cse@gmail.com",
+    "email": "shibbir.io@outlook.com",
     "url": "https://github.com/shibbir"
   },
   "repository": "shibbir/generator-angular2-typescript",
@@ -32,7 +32,7 @@
   ],
   "dependencies": {
     "generator-license": "^4.0.0",
-    "lodash": "^4.15.0",
+    "lodash": "^4.16.1",
     "yeoman-generator": "^0.24.1",
     "yosay": "^1.2.0"
   },

@@ -5,17 +5,27 @@ var generateFullProject = require('./utils').generateFullProject;
 
 describe('app:systemjs', function() {
     before(function () {
-        return generateFullProject().withPrompts({ moduleLoader: 'systemjs' }).toPromise();
+        return generateFullProject().withPrompts({ moduleLoader: 'systemjs', gulp: true }).toPromise();
     });
 
     it('reference systemjs dependencies in package.json', function() {
-        assert.fileContent('package.json', /"lite-server": "\^2.2.2"/);
+        assert.fileContent('package.json', /"gulp": "\^3.9.1"/);
+        assert.fileContent('package.json', /"gulp-clean-css": "\^2.0.12"/);
+        assert.fileContent('package.json', /"gulp-concat": "\^2.6.0"/);
+        assert.fileContent('package.json', /"gulp-connect": "\^5.0.0"/);
+        assert.fileContent('package.json', /"gulp-inject": "\^4.1.0"/);
+        assert.fileContent('package.json', /"gulp-inline-ng2-template": "\^3.0.1"/);
+        assert.fileContent('package.json', /"gulp-load-plugins": "\^1.3.0"/);
+        assert.fileContent('package.json', /"gulp-sourcemaps": "\^1.6.0"/);
+        assert.fileContent('package.json', /"gulp-typescript": "\^3.0.1"/);
+        assert.fileContent('package.json', /"gulp-uglify": "\^2.0.0"/);
+        assert.fileContent('package.json', /"html-minifier": "\^3.1.0"/);
         assert.fileContent('package.json', /"systemjs": "0.19.27"/);
+        assert.fileContent('package.json', /"systemjs-builder": "\^0.15.32"/);
     });
 
     it('generate systemjs related files', function() {
         assert.file([
-            'bs-config.json',
             'src/systemjs.config.js',
             'src/app/main.ts'
         ]);

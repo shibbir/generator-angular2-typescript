@@ -4,7 +4,6 @@
     "target": "es5",
     "noImplicitAny": true,
     "suppressImplicitAnyIndexErrors": true,
-    "outDir": "dist",
     "rootDir": "./src",
     "sourceMap": true,
     "emitDecoratorMetadata": true,

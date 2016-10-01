@@ -27,7 +27,7 @@ describe('app:configuration', function() {
     it('generate generic source files', function() {
         assert.file([
             'src/index.html',
-            'src/styles.css',
+            'src/css/main.css',
 
             'src/app/app.component.ts',
             'src/app/app.module.ts',
@@ -42,7 +42,6 @@ describe('app:configuration', function() {
             'src/app/about/about.component.ts',
             'src/app/about/about.component.html',
             'src/app/about/about.component.spec.ts'
-
         ]);
     });
 });
@@ -54,11 +53,5 @@ describe('app:gulpfile', function () {
 
     it('generate gulpfile.js if gulp is selected', function () {
         assert.file('gulpfile.js');
-    });
-
-    it('reference gulp tasks via npm scripts in package.json', function () {
-        assert.fileContent('package.json', /"start": "gulp"/);
-        assert.fileContent('package.json', /"build": "gulp build"/);
-        assert.fileContent('package.json', /"test": "karma start"/);
     });
 });
