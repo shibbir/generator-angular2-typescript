@@ -65,7 +65,9 @@ gulp.task('inject:index', function () {
 
 gulp.task('tsc', function () {
     return gulp.src(['src/**/*.ts', 'typings/index.d.ts'])
+        .pipe(plugins.sourcemaps.init())
         .pipe(tsProject())
+        .pipe(plugins.sourcemaps.write('/'))
         .pipe(gulp.dest(paths.dev))
         .pipe(plugins.connect.reload());
 });

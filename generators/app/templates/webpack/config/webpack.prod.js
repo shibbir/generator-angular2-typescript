@@ -24,6 +24,9 @@ module.exports = webpackMerge(commonConfig, {
         new webpack.NoErrorsPlugin(),
         new webpack.optimize.DedupePlugin(),
         new webpack.optimize.UglifyJsPlugin({
+            compress: {
+                warnings: false
+            },
             mangle: {
                 keep_fnames: true
             }
