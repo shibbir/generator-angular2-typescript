@@ -15,8 +15,7 @@ describe('app:configuration', function() {
             '.editorconfig',
             'package.json',
             'tsconfig.json',
-            'tslint.json',
-            'typings.json'
+            'tslint.json'
         ]);
     });
 

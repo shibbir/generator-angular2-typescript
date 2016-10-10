@@ -7,11 +7,11 @@
     "rootDir": "./src",
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
-    "moduleResolution": "node"
+    "moduleResolution": "node",
+    "typeRoots": [ "./node_modules/@types" ],
+    "types": [ "jasmine", "node", "core-js"]
   },
   "exclude": [
-    "typings/main.d.ts",
-    "typings/main",
     "node_modules"
   ]
 }

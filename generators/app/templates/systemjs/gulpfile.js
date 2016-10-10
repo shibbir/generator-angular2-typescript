@@ -64,7 +64,7 @@ gulp.task('inject:index', function () {
 });
 
 gulp.task('tsc', function () {
-    return gulp.src(['src/**/*.ts', 'typings/index.d.ts'])
+    return gulp.src(['src/**/*.ts'])
         .pipe(plugins.sourcemaps.init())
         .pipe(tsProject())
         .pipe(plugins.sourcemaps.write('/'))
@@ -73,7 +73,7 @@ gulp.task('tsc', function () {
 });
 
 gulp.task('inline-ng2-templates', function () {
-    return gulp.src(['src/**/*.ts', 'typings/index.d.ts'])
+    return gulp.src(['src/**/*.ts'])
         .pipe(inlineNg2Template({ base: 'src', UseRelativePaths: true, indent: 0, removeLineBreaks: true, templateProcessor: minifyTemplate }))
         .pipe(tsProject())
         .pipe(gulp.dest(paths.tmp));

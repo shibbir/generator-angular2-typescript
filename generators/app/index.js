@@ -121,7 +121,6 @@ module.exports = generators.Base.extend({
         this.template('root/.editorconfig', '.editorconfig');
         this.template('root/tsconfig.json', 'tsconfig.json');
         this.template('root/_tslint.json', 'tslint.json');
-        this.template('root/_typings.json', 'typings.json');
         this.template('root/_package.json', 'package.json');
     },
 

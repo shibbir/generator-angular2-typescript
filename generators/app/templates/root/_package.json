@@ -9,8 +9,7 @@
     "webpack"<% } %>
   ],
   "scripts": {
-    "lint": "tslint \"src/**/*.ts\"",
-    "postinstall": "typings install",<% if (systemjs) { %>
+    "lint": "tslint \"src/**/*.ts\"",<% if (systemjs) { %>
     "start": "gulp serve:dev",
     "build:dev": "gulp build:dev",
     "build": "gulp build:prod",
@@ -37,7 +36,10 @@
     "jquery": "^2.2.4",<% } %>
     "reflect-metadata": "^0.1.3",
     "rxjs": "5.0.0-beta.12",
-    "zone.js": "^0.6.23"
+    "zone.js": "^0.6.23",
+    "@types/core-js": "^0.9.34",
+    "@types/jasmine": "^2.5.35",
+    "@types/node": "^6.0.45"
   },
   "devDependencies": {
     "codelyzer": "0.0.19",<% if (gulp) { %>
@@ -58,8 +60,7 @@
     "systemjs": "0.19.27",
     "systemjs-builder": "^0.15.32",<% } %>
     "tslint": "^3.13.0",
-    "typescript": "^2.0.3",
-    "typings": "^1.3.2"<% if (webpack) { %>,
+    "typescript": "^2.0.3"<% if (webpack) { %>,
     "css-loader": "^0.23.1",
     "extract-text-webpack-plugin": "^1.0.1",
     "file-loader": "^0.8.5",
