@@ -9,7 +9,9 @@
     "webpack"<% } %>
   ],
   "scripts": {
-    "lint": "tslint \"src/**/*.ts\"",<% if (systemjs) { %>
+    "lint": "tslint \"src/**/*.ts\"",
+    "postinstall": "webdriver-manager update",
+    "e2e": "protractor",<% if (systemjs) { %>
     "start": "gulp serve:dev",
     "build:dev": "gulp build:dev",
     "build": "gulp build:prod",
@@ -37,12 +39,16 @@
     "reflect-metadata": "^0.1.3",
     "rxjs": "5.0.0-beta.12",
     "zone.js": "^0.6.23",
-    "@types/core-js": "^0.9.34",
-    "@types/jasmine": "^2.5.35",
-    "@types/node": "^6.0.45"
+    "@types/core-js": "^0.9.34"
   },
   "devDependencies": {
-    "codelyzer": "0.0.19",<% if (gulp) { %>
+    "@types/jasmine": "^2.5.35",
+    "@types/node": "^6.0.45",
+    "@types/protractor": "^1.5.20",
+    "@types/selenium-webdriver": "^2.44.28",
+    "codelyzer": "0.0.19",
+    "protractor": "^4.0.9",
+    "protractor-jasmine2-screenshot-reporter": "^0.3.2",<% if (gulp) { %>
     "gulp": "^3.9.1",
     "gulp-load-plugins": "^1.3.0",
     "gulp-shell": "^0.5.2",

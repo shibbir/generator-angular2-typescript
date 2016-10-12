@@ -122,6 +122,9 @@ module.exports = generators.Base.extend({
         this.template('root/tsconfig.json', 'tsconfig.json');
         this.template('root/_tslint.json', 'tslint.json');
         this.template('root/_package.json', 'package.json');
+        this.template('root/config/helpers.js', 'config/helpers.js');
+        this.template('root/protractor.conf.js', 'protractor.conf.js');
+        this.template('root/config/protractor.conf.js', 'config/protractor.conf.js');
     },
 
     default: function() {
@@ -142,7 +145,6 @@ module.exports = generators.Base.extend({
         }
 
         if(this.webpack) {
-            this.template('webpack/config/helpers.js', 'config/helpers.js');
             this.template('webpack/karma.conf.js', 'karma.conf.js');
             this.template('webpack/config/karma-test-shim.js', 'config/karma-test-shim.js');
 
@@ -168,14 +170,17 @@ module.exports = generators.Base.extend({
         this.template('src/app/app.module.ts', 'src/app/app.module.ts');
         this.template('src/app/app.routing.ts', 'src/app/app.routing.ts');
         this.template('src/app/app.component.html', 'src/app/app.component.html');
+        this.template('src/app/app.component.e2e.ts', 'src/app/app.component.e2e.ts');
         this.template('src/app/app.component.spec.ts', 'src/app/app.component.spec.ts');
 
         this.template('src/app/home/home.component.ts', 'src/app/home/home.component.ts');
         this.template('src/app/home/home.component.html', 'src/app/home/home.component.html');
+        this.template('src/app/home/home.component.e2e.ts', 'src/app/home/home.component.e2e.ts');
         this.template('src/app/home/home.component.spec.ts', 'src/app/home/home.component.spec.ts');
 
         this.template('src/app/about/about.component.ts', 'src/app/about/about.component.ts');
         this.template('src/app/about/about.component.html', 'src/app/about/about.component.html');
+        this.template('src/app/about/about.component.e2e.ts', 'src/app/about/about.component.e2e.ts');
         this.template('src/app/about/about.component.spec.ts', 'src/app/about/about.component.spec.ts');
     },
 
