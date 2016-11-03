@@ -24,28 +24,28 @@
     "test": "karma start"<% } %>
   },
   "dependencies": {
-    "@angular/common": "2.0.0",
-    "@angular/compiler": "2.0.0",
-    "@angular/core": "2.0.0",<% if (angularPackages['@angular/forms']) { %>
-    "@angular/forms": "2.0.0",<% } %><% if (angularPackages['@angular/http']) { %>
-    "@angular/http": "2.0.0",<% } %>
-    "@angular/platform-browser": "2.0.0",
-    "@angular/platform-browser-dynamic": "2.0.0",
-    "@angular/router": "3.0.0",<% if (bootstrap) { %>
+    "@angular/common": "^2.1.1",
+    "@angular/compiler": "^2.1.1",
+    "@angular/core": "^2.1.1",<% if (angularPackages['@angular/forms']) { %>
+    "@angular/forms": "^2.1.1",<% } %><% if (angularPackages['@angular/http']) { %>
+    "@angular/http": "^2.1.1",<% } %>
+    "@angular/platform-browser": "^2.1.1",
+    "@angular/platform-browser-dynamic": "^2.1.1",
+    "@angular/router": "^3.1.1",<% if (bootstrap) { %>
     "bootstrap": "^3.3.7",<% } %>
     "core-js": "^2.4.1",<% if (foundation) { %>
     "foundation-sites": "^6.2.3",<% } %><% if (jquery) { %>
     "jquery": "^2.2.4",<% } %>
-    "reflect-metadata": "^0.1.3",
+    "reflect-metadata": "^0.1.8",
     "rxjs": "5.0.0-beta.12",
-    "zone.js": "^0.6.23",
+    "zone.js": "^0.6.25",
     "@types/core-js": "^0.9.34"
   },
   "devDependencies": {
     "@types/jasmine": "^2.5.35",
     "@types/node": "^6.0.45",
     "@types/protractor": "^1.5.20",
-    "@types/selenium-webdriver": "^2.44.28",
+    "@types/selenium-webdriver": "2.44.29",
     "codelyzer": "0.0.19",
     "protractor": "^4.0.9",
     "protractor-jasmine2-screenshot-reporter": "^0.3.2",<% if (gulp) { %>
@@ -58,12 +58,12 @@
     "gulp-concat": "^2.6.0",
     "gulp-connect": "^5.0.0",
     "gulp-inject": "^4.1.0",
-    "gulp-inline-ng2-template": "^3.0.1",
+    "gulp-inline-ng2-template": "^3.0.2",
     "gulp-sourcemaps": "^1.6.0",
     "gulp-typescript": "^3.0.1",
     "gulp-uglify": "^2.0.0",
     "html-minifier": "^3.1.0",
-    "systemjs": "0.19.27",
+    "systemjs": "0.19.39",
     "systemjs-builder": "^0.15.32",<% } %>
     "tslint": "^3.13.0",
     "typescript": "^2.0.3"<% if (webpack) { %>,

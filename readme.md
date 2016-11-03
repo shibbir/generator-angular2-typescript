@@ -24,7 +24,7 @@ Make a new directory, and cd into it:
 mkdir my-new-project && cd $_
 ```
 
-Run yo angular2-typescript, optionally passing an app name:
+Run `yo angular2-typescript`, optionally passing an app name:
 ```bash
 yo angular2-typescript [app-name]
 ```
@@ -32,12 +32,13 @@ yo angular2-typescript [app-name]
 That'll generate a project including:
 
 - Configured `package.json` file
-- [Gulp](http://gulpjs.com/) task runner
+- [Gulp](http://gulpjs.com/) task runner integration
 - Plain CSS, [Bootstrap](http://getbootstrap.com/) or [Foundation](http://foundation.zurb.com/) integration
 - Either [Webpack](https://webpack.github.io/) or [SystemJS](https://github.com/systemjs/systemjs) integration
 - [Karma](https://karma-runner.github.io/) unit test runner
-- [TSLint](https://palantir.github.io/tslint/) linting for the TypeScript language
+- End-to-end tests with [Protractor](http://www.protractortest.org/)
 - [Istanbul](https://gotwarlost.github.io/istanbul/) code coverage
+- [TSLint](https://palantir.github.io/tslint/) linting for the TypeScript language
 - [License](https://spdx.org/licenses/)
 
 ## Running Unit Tests
