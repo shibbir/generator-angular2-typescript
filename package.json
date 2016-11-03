@@ -1,6 +1,6 @@
 {
   "name": "generator-angular2-typescript",
-  "version": "0.10.2",
+  "version": "0.10.3",
   "description": "Scaffold out a front-end project with angular2, typescript and much more..",
   "keywords": [
     "yeoman-generator",

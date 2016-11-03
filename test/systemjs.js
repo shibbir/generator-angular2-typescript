@@ -14,13 +14,13 @@ describe('app:systemjs', function() {
         assert.fileContent('package.json', /"gulp-concat": "\^2.6.0"/);
         assert.fileContent('package.json', /"gulp-connect": "\^5.0.0"/);
         assert.fileContent('package.json', /"gulp-inject": "\^4.1.0"/);
-        assert.fileContent('package.json', /"gulp-inline-ng2-template": "\^3.0.1"/);
+        assert.fileContent('package.json', /"gulp-inline-ng2-template": "\^3.0.2"/);
         assert.fileContent('package.json', /"gulp-load-plugins": "\^1.3.0"/);
         assert.fileContent('package.json', /"gulp-sourcemaps": "\^1.6.0"/);
         assert.fileContent('package.json', /"gulp-typescript": "\^3.0.1"/);
         assert.fileContent('package.json', /"gulp-uglify": "\^2.0.0"/);
         assert.fileContent('package.json', /"html-minifier": "\^3.1.0"/);
-        assert.fileContent('package.json', /"systemjs": "0.19.27"/);
+        assert.fileContent('package.json', /"systemjs": "0.19.39"/);
         assert.fileContent('package.json', /"systemjs-builder": "\^0.15.32"/);
     });
 
