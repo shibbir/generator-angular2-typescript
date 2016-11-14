@@ -74,7 +74,7 @@ gulp.task('tsc', function () {
 
 gulp.task('inline-ng2-templates', function () {
     return gulp.src(['src/**/*.ts'])
-        .pipe(inlineNg2Template({ base: 'src', UseRelativePaths: true, indent: 0, removeLineBreaks: true, templateProcessor: minifyTemplate }))
+        .pipe(inlineNg2Template({ base: 'src', useRelativePaths: true, indent: 0, removeLineBreaks: true, templateProcessor: minifyTemplate }))
         .pipe(tsProject())
         .pipe(gulp.dest(paths.tmp));
 });
