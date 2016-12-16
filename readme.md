@@ -9,7 +9,8 @@
 [![Coverage Status](https://coveralls.io/repos/github/shibbir/generator-angular2-typescript/badge.svg?branch=master)](https://coveralls.io/github/shibbir/generator-angular2-typescript?branch=master)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](http://opensource.org/licenses/MIT)
 
-Status: Work In Progress
+## Deprecation warning
+This package has been deprecated. Please use <a href="https://www.npmjs.com/package/generator-angular-starter">`generator-angular-starter`</a> instead.
 
 ## Installation
 

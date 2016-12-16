@@ -1,6 +1,6 @@
 {
   "name": "generator-angular2-typescript",
-  "version": "0.10.3",
+  "version": "0.10.4",
   "description": "Scaffold out a front-end project with angular2, typescript and much more..",
   "keywords": [
     "yeoman-generator",
@@ -32,12 +32,12 @@
   ],
   "dependencies": {
     "generator-license": "^4.0.0",
-    "lodash": "^4.16.4",
+    "lodash": "^4.17.2",
     "yeoman-generator": "^0.24.1",
     "yosay": "^1.2.1"
   },
   "devDependencies": {
-    "coveralls": "^2.11.14",
+    "coveralls": "^2.11.15",
     "istanbul": "^0.4.5",
     "mocha": "^3.1.2",
     "yeoman-assert": "^2.2.1",

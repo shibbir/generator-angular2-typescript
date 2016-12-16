@@ -27,7 +27,6 @@ describe('app:webpack', function() {
         assert.file([
             'karma.conf.js',
             'config/karma-test-shim.js',
-            'config/helpers.js',
 
             'webpack.config.js',
             'config/webpack.common.js',

@@ -15,7 +15,10 @@ describe('app:configuration', function() {
             '.editorconfig',
             'package.json',
             'tsconfig.json',
-            'tslint.json'
+            'tslint.json',
+            'protractor.conf.js',
+            'config/helpers.js',
+            'config/protractor.conf.js'
         ]);
     });
 
