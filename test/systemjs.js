@@ -20,8 +20,8 @@ describe('app:systemjs', function() {
         assert.fileContent('package.json', /"gulp-typescript": "\^3.0.1"/);
         assert.fileContent('package.json', /"gulp-uglify": "\^2.0.0"/);
         assert.fileContent('package.json', /"html-minifier": "\^3.1.0"/);
-        assert.fileContent('package.json', /"systemjs": "0.19.39"/);
-        assert.fileContent('package.json', /"systemjs-builder": "\^0.15.32"/);
+        assert.fileContent('package.json', /"systemjs": "\^0.19.40"/);
+        assert.fileContent('package.json', /"systemjs-builder": "\^0.15.33"/);
     });
 
     it('generate systemjs related files', function() {
