@@ -1,32 +1,34 @@
 'use strict';
 
-let generators = require('yeoman-generator');
+let Generator = require('yeoman-generator');
 let yosay = require('yosay');
 let path = require('path');
 let _ = require('lodash');
 
-module.exports = generators.Base.extend({
-    constructor: function () {
-        generators.Base.apply(this, arguments);
-    },
+module.exports = class extends Generator {
+    constructor(args, opts) {
+        super(args, opts);
+    }
 
-    initializing: function() {
+    initializing() {
         this.log(yosay('Hello, and welcome to angular2-typescript generator!'));
         this.argument('appname', { type: String, required: false });
-        this.appname = _.kebabCase(this.appname || path.basename(process.cwd()));
 
         this.sourceRoot(path.join(__dirname, 'templates'));
 
-        this.angularPackages = [];
-        this.webpack = null;
-        this.systemjs = null;
-        this.bootstrap = null;
-        this.foundation = null;
-        this.jquery = null;
-        this.gulp = null;
-    },
+        this.data = {
+            appname: _.kebabCase(this.appname || path.basename(process.cwd())),
+            gulp: null,
+            jquery: null,
+            bootstrap: null,
+            foundation: null,
+            webpack: null,
+            systemjs: null,
+            ngPackages: []
+        };
+    }
 
-    prompting: function() {
+    prompting() {
         let done = this.async();
 
         let prompts = [
@@ -78,11 +80,11 @@ module.exports = generators.Base.extend({
                 name    : 'angularPackages',
                 message : 'Which additional angular packages would you like to include?',
                 choices: [{
-                    value   : '@angular/forms',
+                    value   : 'ngForms',
                     name    : '@angular/forms',
                     checked : false
                 }, {
-                    value   : '@angular/http',
+                    value   : 'ngHttp',
                     name    : '@angular/http',
                     checked : false
                 }]
@@ -91,100 +93,95 @@ module.exports = generators.Base.extend({
 
         this.prompt(prompts).then(function(answers) {
             if(answers.css === 'bootstrap') {
-                this.jquery = true;
-                this.bootstrap = true;
+                this.data.jquery = true;
+                this.data.bootstrap = true;
             } else if(answers.css === 'foundation') {
-                this.jquery = true;
-                this.foundation = true;
+                this.data.jquery = true;
+                this.data.foundation = true;
             }
 
             if(answers.moduleLoader === 'webpack') {
-                this.webpack = true;
+                this.data.webpack = true;
 
                 if(answers.gulp) {
-                    this.gulp = true;
+                    this.data.gulp = true;
                 }
             } else if(answers.moduleLoader === 'systemjs') {
-                this.systemjs = true;
-                this.gulp = true;
+                this.data.systemjs = true;
+                this.data.gulp = true;
             }
 
-            answers.angularPackages.forEach(p => this.angularPackages[p] = p);
+            answers.angularPackages.forEach(p => this.data.ngPackages[p] = p);
 
             done();
         }.bind(this));
-    },
+    }
 
-    configuring: function() {
-        this.template('root/gitignore', '.gitignore');
-        this.template('root/gitattributes', '.gitattributes');
-        this.template('root/.editorconfig', '.editorconfig');
-        this.template('root/tsconfig.json', 'tsconfig.json');
-        this.template('root/_tslint.json', 'tslint.json');
-        this.template('root/_package.json', 'package.json');
-        this.template('root/config/helpers.js', 'config/helpers.js');
-        this.template('root/protractor.conf.js', 'protractor.conf.js');
-        this.template('root/config/protractor.conf.js', 'config/protractor.conf.js');
-    },
+    configuring() {
+        this.fs.copyTpl(this.templatePath('root/_package.json'), this.destinationPath('package.json'), this.data);
+        this.fs.copyTpl(this.templatePath('root/gitignore'), this.destinationPath('.gitignore'));
+        this.fs.copyTpl(this.templatePath('root/gitattributes'), this.destinationPath('.gitattributes'));
+        this.fs.copyTpl(this.templatePath('root/.editorconfig'), this.destinationPath('.editorconfig'));
+        this.fs.copyTpl(this.templatePath('root/tsconfig.json'), this.destinationPath('tsconfig.json'));
+        this.fs.copyTpl(this.templatePath('root/_tslint.json'), this.destinationPath('tslint.json'));
+        this.fs.copyTpl(this.templatePath('root/config/helpers.js'), this.destinationPath('config/helpers.js'));
+        this.fs.copyTpl(this.templatePath('root/protractor.conf.js'), this.destinationPath('protractor.conf.js'));
+        this.fs.copyTpl(this.templatePath('root/config/protractor.conf.js'), this.destinationPath('config/protractor.conf.js'));
+    }
 
-    default: function() {
-        this.composeWith('license', null, {
-            local: require.resolve('generator-license/app')
-        });
+    default() {
+        this.composeWith(require.resolve('generator-license/app'));
+        this.composeWith(require.resolve('../readme'));
+    }
 
-        this.composeWith('readme', null, {
-            local: require.resolve('../readme')
-        });
-    },
-
-    writing: function() {
-        if(this.systemjs) {
-            this.template('systemjs/systemjs.config.js', 'src/systemjs.config.js');
-            this.template('systemjs/gulpfile.js', 'gulpfile.js');
-            this.template('src/main.ts', 'src/app/main.ts');
+    writing() {
+        if(this.data.systemjs) {
+            this.fs.copyTpl(this.templatePath('systemjs/systemjs.config.js'), this.destinationPath('src/systemjs.config.js'), this.data);
+            this.fs.copyTpl(this.templatePath('systemjs/gulpfile.js'), this.destinationPath('gulpfile.js'), this.data);
+            this.fs.copyTpl(this.templatePath('src/main.ts'), this.destinationPath('src/app/main.ts'), this.data);
         }
 
-        if(this.webpack) {
-            this.template('webpack/karma.conf.js', 'karma.conf.js');
-            this.template('webpack/config/karma-test-shim.js', 'config/karma-test-shim.js');
+        if(this.data.webpack) {
+            this.fs.copyTpl(this.templatePath('webpack/karma.conf.js'), this.destinationPath('karma.conf.js'));
+            this.fs.copyTpl(this.templatePath('webpack/config/karma-test-shim.js'), this.destinationPath('config/karma-test-shim.js'));
 
-            this.template('webpack/webpack.config.js', 'webpack.config.js');
-            this.template('webpack/config/webpack.common.js', 'config/webpack.common.js');
-            this.template('webpack/config/webpack.dev.js', 'config/webpack.dev.js');
-            this.template('webpack/config/webpack.prod.js', 'config/webpack.prod.js');
-            this.template('webpack/config/webpack.test.js', 'config/webpack.test.js');
+            this.fs.copyTpl(this.templatePath('webpack/webpack.config.js'), this.destinationPath('webpack.config.js'));
+            this.fs.copyTpl(this.templatePath('webpack/config/webpack.common.js'), this.destinationPath('config/webpack.common.js'), this.data);
+            this.fs.copyTpl(this.templatePath('webpack/config/webpack.dev.js'), this.destinationPath('config/webpack.dev.js'));
+            this.fs.copyTpl(this.templatePath('webpack/config/webpack.prod.js'), this.destinationPath('config/webpack.prod.js'));
+            this.fs.copyTpl(this.templatePath('webpack/config/webpack.test.js'), this.destinationPath('config/webpack.test.js'));
 
-            this.template('webpack/polyfills.ts', 'src/polyfills.ts');
-            this.template('webpack/vendor.ts', 'src/vendor.ts');
-            this.template('src/main.ts', 'src/main.ts');
+            this.fs.copyTpl(this.templatePath('webpack/polyfills.ts'), this.destinationPath('src/polyfills.ts'));
+            this.fs.copyTpl(this.templatePath('webpack/vendor.ts'), this.destinationPath('src/vendor.ts'), this.data);
+            this.fs.copyTpl(this.templatePath('src/main.ts'), this.destinationPath('src/main.ts'), this.data);
 
-            if(this.gulp) {
-                this.template('webpack/gulpfile.js', 'gulpfile.js');
+            if(this.data.gulp) {
+                this.fs.copyTpl(this.templatePath('webpack/gulpfile.js'), this.destinationPath('gulpfile.js'));
             }
         }
 
-        this.template('src/index.html', 'src/index.html');
-        this.template('src/css/main.css', 'src/css/main.css');
+        this.fs.copyTpl(this.templatePath('src/index.html'), this.destinationPath('src/index.html'), this.data);
+        this.fs.copyTpl(this.templatePath('src/css/main.css'), this.destinationPath('src/css/main.css'));
 
-        this.template('src/app/app.component.ts', 'src/app/app.component.ts');
-        this.template('src/app/app.module.ts', 'src/app/app.module.ts');
-        this.template('src/app/app.routing.ts', 'src/app/app.routing.ts');
-        this.template('src/app/app.component.html', 'src/app/app.component.html');
-        this.template('src/app/app.component.e2e.ts', 'src/app/app.component.e2e.ts');
-        this.template('src/app/app.component.spec.ts', 'src/app/app.component.spec.ts');
+        this.fs.copyTpl(this.templatePath('src/app/app.component.ts'), this.destinationPath('src/app/app.component.ts'), this.data);
+        this.fs.copyTpl(this.templatePath('src/app/app.module.ts'), this.destinationPath('src/app/app.module.ts'), this.data);
+        this.fs.copyTpl(this.templatePath('src/app/app.routing.ts'), this.destinationPath('src/app/app.routing.ts'));
+        this.fs.copyTpl(this.templatePath('src/app/app.component.html'), this.destinationPath('src/app/app.component.html'));
+        this.fs.copyTpl(this.templatePath('src/app/app.component.e2e.ts'), this.destinationPath('src/app/app.component.e2e.ts'));
+        this.fs.copyTpl(this.templatePath('src/app/app.component.spec.ts'), this.destinationPath('src/app/app.component.spec.ts'));
 
-        this.template('src/app/home/home.component.ts', 'src/app/home/home.component.ts');
-        this.template('src/app/home/home.component.html', 'src/app/home/home.component.html');
-        this.template('src/app/home/home.component.e2e.ts', 'src/app/home/home.component.e2e.ts');
-        this.template('src/app/home/home.component.spec.ts', 'src/app/home/home.component.spec.ts');
+        this.fs.copyTpl(this.templatePath('src/app/home/home.component.ts'), this.destinationPath('src/app/home/home.component.ts'), this.data);
+        this.fs.copyTpl(this.templatePath('src/app/home/home.component.html'), this.destinationPath('src/app/home/home.component.html'));
+        this.fs.copyTpl(this.templatePath('src/app/home/home.component.e2e.ts'), this.destinationPath('src/app/home/home.component.e2e.ts'));
+        this.fs.copyTpl(this.templatePath('src/app/home/home.component.spec.ts'), this.destinationPath('src/app/home/home.component.spec.ts'));
 
-        this.template('src/app/about/about.component.ts', 'src/app/about/about.component.ts');
-        this.template('src/app/about/about.component.html', 'src/app/about/about.component.html');
-        this.template('src/app/about/about.component.e2e.ts', 'src/app/about/about.component.e2e.ts');
-        this.template('src/app/about/about.component.spec.ts', 'src/app/about/about.component.spec.ts');
-    },
+        this.fs.copyTpl(this.templatePath('src/app/about/about.component.ts'), this.destinationPath('src/app/about/about.component.ts'), this.data);
+        this.fs.copyTpl(this.templatePath('src/app/about/about.component.html'), this.destinationPath('src/app/about/about.component.html'));
+        this.fs.copyTpl(this.templatePath('src/app/about/about.component.e2e.ts'), this.destinationPath('src/app/about/about.component.e2e.ts'));
+        this.fs.copyTpl(this.templatePath('src/app/about/about.component.spec.ts'), this.destinationPath('src/app/about/about.component.spec.ts'));
+    }
 
-    install: function() {
+    install() {
         this.installDependencies({
             skipMessage: this.options['skip-install-message'],
             skipInstall: this.options['skip-install'],
@@ -192,4 +189,4 @@ module.exports = generators.Base.extend({
             npm: true
         });
     }
-});
+}

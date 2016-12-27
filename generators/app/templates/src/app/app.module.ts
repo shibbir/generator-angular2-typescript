@@ -1,6 +1,6 @@
 import {NgModule} from '@angular/core';
-import {BrowserModule} from '@angular/platform-browser';<% if (angularPackages['@angular/forms']) { %>
-import {FormsModule} from '@angular/forms';<% } %><% if (angularPackages['@angular/http']) { %>
+import {BrowserModule} from '@angular/platform-browser';<% if (ngPackages.ngForms) { %>
+import {FormsModule} from '@angular/forms';<% } %><% if (ngPackages.ngHttp) { %>
 import {HttpModule, JsonpModule} from '@angular/http';<% } %>
 
 import {AppComponent} from './app.component';
@@ -15,8 +15,8 @@ import {AboutComponent} from './about/about.component';
         AboutComponent
     ],
     imports: [
-        BrowserModule,<% if (angularPackages['@angular/forms']) { %>
-        FormsModule,<% } %><% if (angularPackages['@angular/http']) { %>
+        BrowserModule,<% if (ngPackages.ngForms) { %>
+        FormsModule,<% } %><% if (ngPackages.ngHttp) { %>
         HttpModule,
         JsonpModule,<% } %>
         routing

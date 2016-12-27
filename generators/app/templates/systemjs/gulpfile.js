@@ -19,7 +19,7 @@ var paths = {
     vendors: [<% if(jquery) { %>
         'node_modules/jquery/dist/jquery.js',<% } %><% if(bootstrap) { %>
         'node_modules/bootstrap/dist/js/bootstrap.js',<% } %><% if(foundation) { %>
-        'node_modules/foundation-sites/dist/foundation.js',<% } %>
+        'node_modules/foundation-sites/dist/js/foundation.js',<% } %>
         'node_modules/core-js/client/shim.js',
         'node_modules/zone.js/dist/zone.js',
         'node_modules/reflect-metadata/Reflect.js'
@@ -27,7 +27,7 @@ var paths = {
     systemjsConfig: 'src/systemjs.config.js',
     css: [<% if(bootstrap) { %>
         'node_modules/bootstrap/dist/css/bootstrap.css',<% } %><% if(foundation) { %>
-        'node_modules/foundation-sites/dist/foundation.css',<% } %>
+        'node_modules/foundation-sites/dist/css/foundation.css',<% } %>
         'src/css/main.css'
     ],
     prod: 'dist/prod/',
@@ -74,7 +74,7 @@ gulp.task('tsc', function () {
 
 gulp.task('inline-ng2-templates', function () {
     return gulp.src(['src/**/*.ts'])
-        .pipe(inlineNg2Template({ base: 'src', useRelativePaths: true, indent: 0, removeLineBreaks: true, templateProcessor: minifyTemplate }))
+        .pipe(inlineNg2Template({ base: 'src', useRelativePaths: false, indent: 0, removeLineBreaks: true, templateProcessor: minifyTemplate }))
         .pipe(tsProject())
         .pipe(gulp.dest(paths.tmp));
 });

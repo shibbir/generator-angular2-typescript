@@ -60,11 +60,11 @@ describe('css:framework', function() {
         });
 
         it('import foundation.js in src/vendor.ts', function() {
-            assert.fileContent('src/vendor.ts', /import 'foundation-sites\/dist\/foundation';/);
+            assert.fileContent('src/vendor.ts', /import 'foundation-sites\/dist\/js\/foundation';/);
         });
 
         it('import foundation.css in src/vendor.ts', function() {
-            assert.fileContent('src/app/app.component.ts', /import 'foundation-sites\/dist\/foundation.css';/);
+            assert.fileContent('src/app/app.component.ts', /import 'foundation-sites\/dist\/css\/foundation.css';/);
         });
 
         it('reference jQuery in package.json', function() {

@@ -24,21 +24,21 @@
     "test": "karma start"<% } %>
   },
   "dependencies": {
-    "@angular/common": "^2.2.0",
-    "@angular/compiler": "^2.2.0",
-    "@angular/core": "^2.2.0",<% if (angularPackages['@angular/forms']) { %>
-    "@angular/forms": "^2.2.0",<% } %><% if (angularPackages['@angular/http']) { %>
-    "@angular/http": "^2.2.0",<% } %>
-    "@angular/platform-browser": "^2.2.0",
-    "@angular/platform-browser-dynamic": "^2.2.0",
-    "@angular/router": "^3.2.0",<% if (bootstrap) { %>
+    "@angular/common": "^2.4.1",
+    "@angular/compiler": "^2.4.1",
+    "@angular/core": "^2.4.1",<% if (ngPackages.ngForms) { %>
+    "@angular/forms": "^2.4.1",<% } %><% if (ngPackages.ngHttp) { %>
+    "@angular/http": "^2.4.1",<% } %>
+    "@angular/platform-browser": "^2.4.1",
+    "@angular/platform-browser-dynamic": "^2.4.1",
+    "@angular/router": "^3.4.1",<% if (bootstrap) { %>
     "bootstrap": "^3.3.7",<% } %>
     "core-js": "^2.4.1",<% if (foundation) { %>
     "foundation-sites": "^6.2.3",<% } %><% if (jquery) { %>
     "jquery": "^2.2.4",<% } %>
     "reflect-metadata": "^0.1.8",
-    "rxjs": "5.0.0-beta.12",
-    "zone.js": "^0.6.25",
+    "rxjs": "5.0.1",
+    "zone.js": "^0.7.4",
     "@types/core-js": "^0.9.34"
   },
   "devDependencies": {
@@ -58,7 +58,7 @@
     "gulp-concat": "^2.6.0",
     "gulp-connect": "^5.0.0",
     "gulp-inject": "^4.1.0",
-    "gulp-inline-ng2-template": "^3.0.2",
+    "gulp-inline-ng2-template": "^4.0.0",
     "gulp-sourcemaps": "^1.6.0",
     "gulp-typescript": "^3.0.1",
     "gulp-uglify": "^2.0.0",

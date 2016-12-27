@@ -1,19 +1,19 @@
 'use strict';
 
-let generators = require('yeoman-generator');
+let Generator = require('yeoman-generator');
 
-module.exports = generators.Base.extend({
-    constructor: function () {
-        generators.Base.apply(this, arguments);
-    },
+module.exports = class extends Generator {
+    constructor(args, opts) {
+        super(args, opts);
+    }
 
-    writing: function() {
+    writing() {
         let data = {
             version: require('../../package.json').version,
             appname: this.fs.readJSON(this.destinationPath('package.json'), {}).name,
             license: this.fs.readJSON(this.destinationPath('package.json'), {}).license
         };
 
-        this.template('_readme.md', 'readme.md', data);
+        this.fs.copyTpl(this.templatePath('_readme.md'), this.destinationPath('README.md'), data);
     }
-});
+}
