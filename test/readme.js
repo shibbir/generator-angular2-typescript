@@ -9,6 +9,6 @@ describe('app:readme', function() {
     });
 
     it('generate readme.md file', function() {
-        assert.file('readme.md');
+        assert.file('README.md');
     });
 });
